@@ -42,10 +42,14 @@ if (session_status() === PHP_SESSION_NONE) {
                             <i class="fas fa-home"></i> Home
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products.php">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-shoe-prints"></i> Products
                         </a>
+                        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                            <li><a class="dropdown-item" href="products-men.php"><i class="fas fa-crown"></i> Men's Shoes</a></li>
+                            <li><a class="dropdown-item" href="products-women.php"><i class="fas fa-crown"></i> Women's Shoes</a></li>
+                        </ul>
                     </li>
                     
                     <!-- Admin Link (Only visible if logged in as admin) -->
@@ -65,22 +69,13 @@ if (session_status() === PHP_SESSION_NONE) {
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="profile.php"><i class="fas fa-user"></i> My Profile</a></li>
-                            <li><a class="dropdown-item" href="orders.php"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
+                            <li><a class="dropdown-item" href="my-orders.php"><i class="fas fa-list"></i> My Orders</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-danger" href="controllers/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                     </li>
                     <!-- Cart Icon -->
-                    <li class="nav-item">
-                        <a class="nav-link position-relative" href="cart.php">
-                            <i class="fas fa-shopping-cart"></i> Cart
-                            <?php if (isset($_SESSION['cart_count']) && $_SESSION['cart_count'] > 0): ?>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                <?php echo $_SESSION['cart_count']; ?>
-                            </span>
-                            <?php endif; ?>
-                        </a>
-                    </li>
+                   
                     <?php else: ?>
                     <!-- Auth Links (Not Logged In) -->
                     <li class="nav-item">

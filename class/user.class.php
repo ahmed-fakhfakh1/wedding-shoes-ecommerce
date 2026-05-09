@@ -9,7 +9,7 @@ class user{
     
     
     public function insert(){
-        require_once('../includes/config.php');
+        require_once(__DIR__ . '/../includes/config.php');
         $cnx=new connexion();
         $pdo=$cnx->cnxBase();
         // Hash password before inserting
@@ -19,7 +19,7 @@ class user{
     }
     
     public function createUser(){
-        require_once('../includes/config.php');
+        require_once(__DIR__ . '/../includes/config.php');
         $cnx=new connexion();
         $pdo=$cnx->cnxBase();
         // Hash password before inserting
@@ -29,7 +29,7 @@ class user{
     }
     
     public function login(){
-        require_once('../includes/config.php');
+        require_once(__DIR__ . '/../includes/config.php');
         $cnx=new connexion();
         $pdo=$cnx->cnxBase();
         $req="select * from users where email='$this->email'";

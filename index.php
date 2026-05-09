@@ -35,28 +35,32 @@ include 'includes/header.php';
     <div class="row">
         <!-- Men's Shoes -->
         <div class="col-md-6 mb-4">
-            <div class="category-card" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.9), rgba(27, 27, 27, 0.9)), url('https://via.placeholder.com/500x300?text=Men+Shoes'); background-size: cover; background-position: center; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease; cursor: pointer;">
-                <div class="text-center">
-                    <h3 class="display-6 fw-bold mb-3">
-                        <i class="fas fa-shoe-prints"></i> Men's Shoes
-                    </h3>
-                    <p style="font-size: 1.1rem;">Elegant Options for Grooms</p>
-                    <button class="btn btn-light mt-3">View Collection</button>
+            <a href="products-men.php" style="text-decoration: none;">
+                <div class="category-card" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.9), rgba(27, 27, 27, 0.9)), url('https://via.placeholder.com/500x300?text=Men+Shoes'); background-size: cover; background-position: center; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                    <div class="text-center">
+                        <h3 class="display-6 fw-bold mb-3">
+                            <i class="fas fa-shoe-prints"></i> Men's Shoes
+                        </h3>
+                        <p style="font-size: 1.1rem;">Elegant Options for Grooms</p>
+                        <button class="btn btn-light mt-3">View Collection</button>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- Women's Shoes -->
         <div class="col-md-6 mb-4">
-            <div class="category-card" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.9), rgba(27, 27, 27, 0.9)), url('https://via.placeholder.com/500x300?text=Women+Shoes'); background-size: cover; background-position: center; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease; cursor: pointer;">
-                <div class="text-center">
-                    <h3 class="display-6 fw-bold mb-3">
-                        <i class="fas fa-crown"></i> Women's Shoes
-                    </h3>
-                    <p style="font-size: 1.1rem;">Exquisite Choices for Brides</p>
-                    <button class="btn btn-light mt-3">View Collection</button>
+            <a href="products-women.php" style="text-decoration: none;">
+                <div class="category-card" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.9), rgba(27, 27, 27, 0.9)), url('https://via.placeholder.com/500x300?text=Women+Shoes'); background-size: cover; background-position: center; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                    <div class="text-center">
+                        <h3 class="display-6 fw-bold mb-3">
+                            <i class="fas fa-crown"></i> Women's Shoes
+                        </h3>
+                        <p style="font-size: 1.1rem;">Exquisite Choices for Brides</p>
+                        <button class="btn btn-light mt-3">View Collection</button>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </section>
@@ -208,76 +212,97 @@ include 'includes/header.php';
     </div>
 </section>
 
-<!-- Testimonials Section -->
+<!-- Shoe Care Tips Section -->
 <section class="mb-5 py-5">
     <div class="text-center mb-5">
-        <h2 class="display-5 fw-bold mb-3">What Our Customers Say</h2>
+        <h2 class="display-5 fw-bold mb-3">Wedding Shoe Care Tips</h2>
+        <p class="text-muted" style="font-size: 1.1rem;">Maintain the beauty of your wedding shoes for years to come</p>
     </div>
 
     <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card" style="border: none; border-left: 4px solid #c41e3a; border-radius: 5px; padding: 1.5rem;">
-                <div class="mb-3">
-                    <span class="text-warning">★★★★★</span>
-                </div>
-                <p class="card-text" style="font-style: italic; margin-bottom: 1.5rem;">"Amazing shoes! They were so comfortable throughout the entire day. Highly recommended!"</p>
-                <div class="d-flex align-items-center">
-                    <div class="me-3">
-                        <img src="https://via.placeholder.com/50x50?text=Sarah" class="rounded-circle" alt="Sarah" style="width: 50px; height: 50px;">
-                    </div>
-                    <div>
-                        <p class="fw-bold mb-0">Sarah Johnson</p>
-                        <p class="small text-muted mb-0">Bride, Paris</p>
-                    </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100" style="border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-3">
+                        <i class="fas fa-droplet" style="color: #c41e3a; margin-right: 0.5rem;"></i>Water Protection
+                    </h5>
+                    <p class="card-text text-muted">
+                        Apply a quality water-resistant spray to your wedding shoes before the big day. This protective coating will help repel water and stains, keeping your shoes looking pristine throughout your special event.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-            <div class="card" style="border: none; border-left: 4px solid #c41e3a; border-radius: 5px; padding: 1.5rem;">
-                <div class="mb-3">
-                    <span class="text-warning">★★★★★</span>
-                </div>
-                <p class="card-text" style="font-style: italic; margin-bottom: 1.5rem;">"Perfect quality and excellent customer service. My shoes arrived on time!"</p>
-                <div class="d-flex align-items-center">
-                    <div class="me-3">
-                        <img src="https://via.placeholder.com/50x50?text=Marie" class="rounded-circle" alt="Marie" style="width: 50px; height: 50px;">
-                    </div>
-                    <div>
-                        <p class="fw-bold mb-0">Marie Dupont</p>
-                        <p class="small text-muted mb-0">Bride, Lyon</p>
-                    </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100" style="border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-3">
+                        <i class="fas fa-brush" style="color: #c41e3a; margin-right: 0.5rem;"></i>Regular Cleaning
+                    </h5>
+                    <p class="card-text text-muted">
+                        Clean your shoes regularly with a soft cloth and appropriate cleaning products for the material. For leather shoes, use a leather conditioner every few months. For satin and delicate fabrics, use gentle specialized cleaners.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-            <div class="card" style="border: none; border-left: 4px solid #c41e3a; border-radius: 5px; padding: 1.5rem;">
-                <div class="mb-3">
-                    <span class="text-warning">★★★★★</span>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100" style="border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-3">
+                        <i class="fas fa-box-open" style="color: #c41e3a; margin-right: 0.5rem;"></i>Proper Storage
+                    </h5>
+                    <p class="card-text text-muted">
+                        Store your wedding shoes in a cool, dry place, preferably in the original box or a shoe bag. Keep them away from direct sunlight and extreme temperatures. Use shoe trees to maintain their shape.
+                    </p>
                 </div>
-                <p class="card-text" style="font-style: italic; margin-bottom: 1.5rem;">"Elegant design and superb craftsmanship. Worth every euro!"</p>
-                <div class="d-flex align-items-center">
-                    <div class="me-3">
-                        <img src="https://via.placeholder.com/50x50?text=Pierre" class="rounded-circle" alt="Pierre" style="width: 50px; height: 50px;">
-                    </div>
-                    <div>
-                        <p class="fw-bold mb-0">Pierre Martin</p>
-                        <p class="small text-muted mb-0">Groom, Marseille</p>
-                    </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100" style="border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold mb-3">
+                        <i class="fas fa-shoe-prints" style="color: #c41e3a; margin-right: 0.5rem;"></i>Break-In Time
+                    </h5>
+                    <p class="card-text text-muted">
+                        Never wear your wedding shoes for the first time on your wedding day! Break them in at home for a few hours each day starting 2-3 weeks before the event. This ensures maximum comfort when you really need it.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Call to Action Section -->
-<section style="background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%); color: white; padding: 80px 0; border-radius: 10px; text-align: center; margin-bottom: 5rem;">
-    <h2 class="display-4 fw-bold mb-3">Ready to Find Your Perfect Wedding Shoes?</h2>
-    <p class="lead mb-4" style="font-size: 1.2rem;">Join thousands of happy couples who found their ideal shoes with us</p>
-    <a href="products.php" class="btn btn-light btn-lg px-5">
-        <i class="fas fa-shopping-bag me-2"></i> Start Shopping
-    </a>
+<!-- About Wedding Shoes Section -->
+<section class="mb-5 py-5" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.05) 0%, rgba(27, 27, 27, 0.05) 100%); border-radius: 10px; padding: 3rem;">
+    <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <h2 class="display-5 fw-bold mb-3">The History of Wedding Shoes</h2>
+            <p class="lead text-muted mb-3">
+                Wedding shoes have been an integral part of bridal traditions for centuries. From ancient times to modern ceremonies, the shoes worn on a wedding day carry deep cultural significance.
+            </p>
+            <p class="text-muted mb-3">
+                Traditionally, wedding shoes symbolize the journey of marriage and represent the bride and groom's readiness to step into their new life together. In many cultures, the condition and beauty of the bride's shoes were considered indicators of the couple's prosperity and happiness.
+            </p>
+            <p class="text-muted mb-3">
+                Today, wedding shoes represent personal style, comfort, and the perfect balance between tradition and modern fashion. Whether you choose classic formal shoes or contemporary designs, the right pair can complete your wedding day look.
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <div style="background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%); border-radius: 10px; padding: 2rem; color: white; text-align: center; box-shadow: 0 8px 24px rgba(196, 30, 58, 0.2);">
+                <i class="fas fa-shoe-prints" style="font-size: 4rem; margin-bottom: 1rem; display: block; opacity: 0.8;"></i>
+                <h4 class="fw-bold mb-3">Why Wedding Shoes Matter</h4>
+                <ul style="text-align: left; list-style: none; padding: 0;">
+                    <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Completes your wedding ensemble perfectly</li>
+                    <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Provides all-day comfort and support</li>
+                    <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Reflects your personal style and personality</li>
+                    <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Creates lasting memories in photos</li>
+                    <li class="mb-2"><i class="fas fa-check-circle me-2"></i> A keepsake for future generations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </section>
 
 <?php

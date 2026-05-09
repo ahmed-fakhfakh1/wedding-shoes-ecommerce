@@ -278,20 +278,8 @@ $products = $prod->getAllProducts();
                 </a>
             </li>
             <li>
-                <a href="users.php">
-                    <i class="fas fa-users"></i> Users
-                </a>
-            </li>
-            <li>
-                <a href="categories.php">
-                    <i class="fas fa-list"></i> Categories
-                </a>
-            </li>
-            <li>
-                <a href="settings.php">
-                    <i class="fas fa-cog"></i> Settings
-                </a>
-            </li>
+            
+           
             <li style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin-top: 2rem; padding-top: 2rem;">
                 <a href="../controllers/logout.php">
                     <i class="fas fa-sign-out-alt"></i> Logout
@@ -308,7 +296,7 @@ $products = $prod->getAllProducts();
                 <h2>Manage Products</h2>
                 <small class="text-muted">View, edit, and manage all wedding shoes</small>
             </div>
-            <a href="add_product.php" class="btn btn-primary btn-lg">
+            <a href="create_product.php" class="btn btn-primary btn-lg">
                 <i class="fas fa-plus"></i> Add New Product
             </a>
         </div>
@@ -427,19 +415,7 @@ $products = $prod->getAllProducts();
             </div>
 
             <!-- Pagination -->
-            <nav aria-label="Page navigation" style="margin-top: 2rem;">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+            
         </div>
     </div>
 

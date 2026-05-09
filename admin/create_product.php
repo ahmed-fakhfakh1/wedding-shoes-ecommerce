@@ -167,10 +167,15 @@ $page_title = "Create Product";
             border: 2px solid #ddd;
         }
 
-        .row-two-col {
+        .sizes-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 1rem;
+        }
+
+        .form-check {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
         }
 
         @media (max-width: 768px) {
@@ -190,8 +195,8 @@ $page_title = "Create Product";
                 text-align: center;
             }
 
-            .row-two-col {
-                grid-template-columns: 1fr;
+            .sizes-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -208,9 +213,6 @@ $page_title = "Create Product";
             <li><a href="dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a></li>
             <li><a href="products.php" class="active"><i class="fas fa-shoe-prints"></i> Manage Products</a></li>
             <li><a href="orders.php"><i class="fas fa-shopping-bag"></i> Orders</a></li>
-            <li><a href="users.php"><i class="fas fa-users"></i> Users</a></li>
-            <li><a href="categories.php"><i class="fas fa-list"></i> Categories</a></li>
-            <li><a href="settings.php"><i class="fas fa-cog"></i> Settings</a></li>
             <li style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin-top: 2rem; padding-top: 2rem;">
                 <a href="../controllers/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
@@ -230,149 +232,119 @@ $page_title = "Create Product";
         <!-- Create Product Form -->
         <form action="../controllers/create_product.php" method="POST" enctype="multipart/form-data">
             
-            <!-- Basic Information Section -->
+            <!-- Product Information Section -->
             <div class="form-section">
-                <h4><i class="fas fa-info-circle"></i> Basic Information</h4>
+                <h4><i class="fas fa-shoe-prints"></i> Product Information</h4>
                 
-                <div class="row-two-col">
-                    <div class="form-group">
-                        <label for="name">Product Name *</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="e.g., Classic Black Formal Heels" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sku">SKU (Stock Keeping Unit) *</label>
-                        <input type="text" class="form-control" id="sku" name="sku" placeholder="e.g., WS-BLACK-001" required>
-                    </div>
+                <div class="form-group mb-3">
+                    <label for="name">Shoe Name *</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="e.g., Classic Black Formal Heels" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Detailed product description..."></textarea>
-                </div>
-            </div>
-
-            <!-- Pricing & Stock Section -->
-            <div class="form-section">
-                <h4><i class="fas fa-money-bill-wave"></i> Pricing & Stock</h4>
-                
-                <div class="row-two-col">
-                    <div class="form-group">
-                        <label for="price">Price (€) *</label>
-                        <input type="number" class="form-control" id="price" name="price" step="0.01" placeholder="0.00" required>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="gender">Gender *</label>
+                            <select class="form-select" id="gender" name="gender" required onchange="updateCategories()">
+                                <option value="">-- Select Gender --</option>
+                                <option value="Men">Men</option>
+                                <option value="Women">Women</option>
+                            </select>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="quantity">Quantity in Stock *</label>
-                        <input type="number" class="form-control" id="quantity" name="quantity" placeholder="0" required>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="category">Category *</label>
+                            <select class="form-select" id="category" name="category_id" required>
+                                <option value="">-- Select Category --</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Category & Details Section -->
+            <!-- Size Selection Section -->
             <div class="form-section">
-                <h4><i class="fas fa-palette"></i> Category & Details</h4>
+                <h4><i class="fas fa-expand"></i> Available Sizes (EU) *</h4>
+                <p class="text-muted small">Select all available sizes for this shoe</p>
                 
-                <div class="row-two-col">
-                    <div class="form-group">
-                        <label for="gender">Gender *</label>
-                        <select class="form-select" id="gender" name="gender" required>
-                            <option value="">-- Select Gender --</option>
-                            <option value="Men">Men</option>
-                            <option value="Women">Women</option>
-                        </select>
+                <div class="sizes-grid">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="35" id="size35">
+                        <label class="form-check-label" for="size35">35</label>
                     </div>
-
-                    <div class="form-group">
-                        <label for="category">Category *</label>
-                        <select class="form-select" id="category" name="category_id" required>
-                            <option value="">-- Select Category --</option>
-                            <option value="1">Formal</option>
-                            <option value="2">Casual</option>
-                            <option value="3">Wedding Collection</option>
-                            <option value="4">Special Events</option>
-                            <option value="5">Party</option>
-                            <option value="6">Comfort</option>
-                        </select>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="36" id="size36">
+                        <label class="form-check-label" for="size36">36</label>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="color">Color</label>
-                    <input type="text" class="form-control" id="color" name="color" placeholder="e.g., Black, White, Gold">
-                </div>
-
-                <div class="row-two-col">
-                    <div class="form-group">
-                        <label for="size">Size</label>
-                        <select class="form-select" id="size" name="size">
-                            <option value="">-- Select Size --</option>
-                            <option value="35">35</option>
-                            <option value="36">36</option>
-                            <option value="37">37</option>
-                            <option value="38">38</option>
-                            <option value="39">39</option>
-                            <option value="40">40</option>
-                            <option value="41">41</option>
-                            <option value="42">42</option>
-                            <option value="43">43</option>
-                            <option value="44">44</option>
-                            <option value="45">45</option>
-                        </select>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="37" id="size37">
+                        <label class="form-check-label" for="size37">37</label>
                     </div>
-
-                    <div class="form-group">
-                        <label for="material">Material</label>
-                        <input type="text" class="form-control" id="material" name="material" placeholder="e.g., Leather, Suede, Synthetic">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="38" id="size38">
+                        <label class="form-check-label" for="size38">38</label>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="style">Style</label>
-                    <select class="form-select" id="style" name="style">
-                        <option value="">-- Select Style --</option>
-                        <option value="Heels">Heels</option>
-                        <option value="Flats">Flats</option>
-                        <option value="Loafers">Loafers</option>
-                        <option value="Oxfords">Oxfords</option>
-                        <option value="Sandals">Sandals</option>
-                        <option value="Boots">Boots</option>
-                        <option value="Pumps">Pumps</option>
-                        <option value="Ballerinas">Ballerinas</option>
-                    </select>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="39" id="size39">
+                        <label class="form-check-label" for="size39">39</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="40" id="size40">
+                        <label class="form-check-label" for="size40">40</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="41" id="size41">
+                        <label class="form-check-label" for="size41">41</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="42" id="size42">
+                        <label class="form-check-label" for="size42">42</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="43" id="size43">
+                        <label class="form-check-label" for="size43">43</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="44" id="size44">
+                        <label class="form-check-label" for="size44">44</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="sizes" value="45" id="size45">
+                        <label class="form-check-label" for="size45">45</label>
+                    </div>
                 </div>
             </div>
 
-            <!-- Image Section -->
+            <!-- Stock Quantity Section -->
+            <div class="form-section">
+                <h4><i class="fas fa-cube"></i> Stock Quantity</h4>
+                
+                <div class="form-group">
+                    <label for="quantity">Quantity in Stock *</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder="0" min="0" required>
+                </div>
+            </div>
+
+            <!-- Price Section -->
+            <div class="form-section">
+                <h4><i class="fas fa-euro-sign"></i> Price</h4>
+                
+                <div class="form-group">
+                    <label for="price">Price (€) *</label>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="0.00" step="0.01" min="0" required>
+                </div>
+            </div>
+
+            <!-- Image Upload Section -->
             <div class="form-section">
                 <h4><i class="fas fa-image"></i> Product Image</h4>
                 
                 <div class="form-group">
                     <label for="image">Upload Product Image</label>
                     <input type="file" class="form-control" id="image" name="image" accept="image/*" onchange="previewImage(event)">
-                    <small class="text-muted">Supported formats: JPG, PNG, GIF (Max 5MB)</small>
-                    <img id="imagePreview" class="image-preview" src="" alt="Preview">
-                </div>
-            </div>
-
-            <!-- Status Section -->
-            <div class="form-section">
-                <h4><i class="fas fa-toggle-on"></i> Status</h4>
-                
-                <div class="row-two-col">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="active" name="status" value="1" checked>
-                            <label class="form-check-label" for="active">Active Product</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="featured" name="featured" value="1">
-                            <label class="form-check-label" for="featured">Featured Product</label>
-                        </div>
-                    </div>
+                    <small class="text-muted">Supported formats: JPG, PNG, GIF (Max 5MB). Optional.</small>
+                    <img id="imagePreview" class="image-preview" src="" alt="Image Preview">
                 </div>
             </div>
 
@@ -389,6 +361,7 @@ $page_title = "Create Product";
     </div>
 
     <script>
+        // Preview image before upload
         function previewImage(event) {
             const file = event.target.files[0];
             const preview = document.getElementById('imagePreview');
@@ -405,33 +378,72 @@ $page_title = "Create Product";
             }
         }
 
-        // Validate form before submit
+        // Categories based on gender
+        const categories = {
+            'Men': [
+                { id: 1, name: 'Formal' },
+                { id: 2, name: 'Casual' },
+                { id: 3, name: 'Party' },
+                { id: 4, name: 'Comfort' }
+            ],
+            'Women': [
+                { id: 5, name: 'Formal' },
+                { id: 6, name: 'Casual' },
+                { id: 7, name: 'Party' },
+                { id: 8, name: 'Comfort' }
+            ]
+        };
+
+        function updateCategories() {
+            const gender = document.getElementById('gender').value;
+            const categorySelect = document.getElementById('category');
+            
+            categorySelect.innerHTML = '<option value="">-- Select Category --</option>';
+            
+            if (gender && categories[gender]) {
+                categories[gender].forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat.id;
+                    option.textContent = cat.name;
+                    categorySelect.appendChild(option);
+                });
+            }
+        }
+
+        // Form validation
         document.querySelector('form').addEventListener('submit', function(e) {
             const name = document.getElementById('name').value.trim();
-            const sku = document.getElementById('sku').value.trim();
-            const price = parseFloat(document.getElementById('price').value);
+            const gender = document.getElementById('gender').value;
+            const category = document.getElementById('category').value;
             const quantity = parseInt(document.getElementById('quantity').value);
+            const sizeChecks = document.querySelectorAll('input[name="sizes"]:checked');
 
             if (!name) {
-                alert('Product name is required');
+                alert('Shoe name is required');
                 e.preventDefault();
                 return;
             }
 
-            if (!sku) {
-                alert('SKU is required');
+            if (!gender) {
+                alert('Gender is required');
                 e.preventDefault();
                 return;
             }
 
-            if (isNaN(price) || price <= 0) {
-                alert('Valid price is required');
+            if (!category) {
+                alert('Category is required');
+                e.preventDefault();
+                return;
+            }
+
+            if (sizeChecks.length === 0) {
+                alert('Please select at least one size');
                 e.preventDefault();
                 return;
             }
 
             if (isNaN(quantity) || quantity < 0) {
-                alert('Valid quantity is required');
+                alert('Valid stock quantity is required');
                 e.preventDefault();
                 return;
             }

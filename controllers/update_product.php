@@ -18,21 +18,53 @@ if (!$product_id) {
 }
 
 // Get form data
-$name = isset($_POST['name']) ? $_POST['name'] : '';
-$sku = isset($_POST['sku']) ? $_POST['sku'] : '';
-$description = isset($_POST['description']) ? $_POST['description'] : '';
+$name = isset($_POST['name']) ? trim($_POST['name']) : '';
 $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
 $category_id = isset($_POST['category_id']) ? intval($_POST['category_id']) : 0;
-$price = isset($_POST['price']) ? floatval($_POST['price']) : 0;
 $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 0;
-$color = isset($_POST['color']) ? $_POST['color'] : '';
-$size = isset($_POST['size']) ? $_POST['size'] : '';
-$material = isset($_POST['material']) ? $_POST['material'] : '';
-$style = isset($_POST['style']) ? $_POST['style'] : '';
-$status = isset($_POST['status']) ? 1 : 0;
-$featured = isset($_POST['featured']) ? 1 : 0;
+$price = isset($_POST['price']) ? floatval($_POST['price']) : 0;
+$sizes = isset($_POST['sizes']) ? $_POST['sizes'] : array();
 
-// Get existing product to preserve current image if no new one uploaded
+// Ensure sizes is always an array (in case only one is selected)
+if (!is_array($sizes)) {
+    $sizes = array($sizes);
+}
+
+// Convert sizes array to comma-separated string
+$size_string = !empty($sizes) ? implode(',', $sizes) : '';
+
+// Validate required fields
+if (!$name) {
+    header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=Product name is required');
+    exit();
+}
+
+if (!$gender) {
+    header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=Gender is required');
+    exit();
+}
+
+if (!$category_id) {
+    header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=Category is required');
+    exit();
+}
+
+if (empty($sizes)) {
+    header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=Please select at least one size');
+    exit();
+}
+
+if ($quantity < 0) {
+    header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=Quantity cannot be negative');
+    exit();
+}
+
+if ($price < 0) {
+    header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=Price cannot be negative');
+    exit();
+}
+
+// Get existing product
 $prod_temp = new product();
 $existing_product = $prod_temp->getProduct($product_id);
 
@@ -41,6 +73,7 @@ if (!$existing_product) {
     exit();
 }
 
+// Keep existing image URL
 $image_url = $existing_product['image_url'];
 
 // Handle image upload
@@ -80,46 +113,24 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
             // Move uploaded file
             if (move_uploaded_file($file_tmp, $destination)) {
                 $image_url = 'uploads/products/' . $new_filename;
-            } else {
-                $error = "Failed to upload image.";
-                header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=' . urlencode($error));
-                exit();
             }
-        } else {
-            $error = "File size exceeds 5MB limit.";
-            header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=' . urlencode($error));
-            exit();
         }
-    } else {
-        $error = "Invalid file type. Only JPG, PNG, GIF allowed.";
-        header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=' . urlencode($error));
-        exit();
     }
-}
-
-// Validate required fields
-if (!$name || !$sku || !$gender || !$category_id || !$price) {
-    header('Location: ../admin/edit_product.php?id=' . $product_id . '&error=Missing required fields');
-    exit();
 }
 
 // Create product object and set properties
 $prod = new product();
 $prod->id = $product_id;
 $prod->name = $name;
-$prod->sku = $sku;
-$prod->description = $description;
 $prod->gender = $gender;
 $prod->category_id = $category_id;
-$prod->price = $price;
 $prod->quantity = $quantity;
-$prod->color = $color;
-$prod->size = $size;
-$prod->material = $material;
-$prod->style = $style;
+$prod->price = $price;
+$prod->size = $size_string;
+// Keep sku and image_url from existing product
+$prod->sku = $existing_product['sku'];
 $prod->image_url = $image_url;
-$prod->status = $status;
-$prod->featured = $featured;
+$prod->status = 1;
 
 // Update product
 try {

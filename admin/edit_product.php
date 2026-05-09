@@ -7,6 +7,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['is_admin'] != 1) {
     exit();
 }
 
+require_once('../class/product.class.php');
+
 // Get product ID from URL
 $product_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -17,9 +19,17 @@ if (!$product_id) {
 
 $page_title = "Edit Product";
 
-// Load product data (you'll handle this in your product.class)
-// For now, we'll show the form structure, you'll add the database query
-$product = null;
+// Load product data
+$prod_temp = new product();
+$product = $prod_temp->getProduct($product_id);
+
+if (!$product) {
+    header('Location: products.php?error=Product not found');
+    exit();
+}
+
+// Convert sizes string to array
+$available_sizes = !empty($product['size']) ? explode(',', $product['size']) : array();
 
 ?>
 
@@ -240,9 +250,6 @@ $product = null;
             <li><a href="dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a></li>
             <li><a href="products.php" class="active"><i class="fas fa-shoe-prints"></i> Manage Products</a></li>
             <li><a href="orders.php"><i class="fas fa-shopping-bag"></i> Orders</a></li>
-            <li><a href="users.php"><i class="fas fa-users"></i> Users</a></li>
-            <li><a href="categories.php"><i class="fas fa-list"></i> Categories</a></li>
-            <li><a href="settings.php"><i class="fas fa-cog"></i> Settings</a></li>
             <li style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin-top: 2rem; padding-top: 2rem;">
                 <a href="../controllers/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
@@ -264,6 +271,12 @@ $product = null;
             <i class="fas fa-info-circle"></i> Product ID: <strong><?php echo $product_id; ?></strong>
         </div>
 
+        <?php if(isset($_GET['created']) && $_GET['created'] == 1): ?>
+        <div class="alert alert-success" role="alert">
+            <i class="fas fa-check-circle"></i> <strong>Product created successfully!</strong> Now you can add more details like images.
+        </div>
+        <?php endif; ?>
+
         <!-- Edit Product Form -->
         <form action="../controllers/update_product.php" method="POST" enctype="multipart/form-data">
             
@@ -273,52 +286,18 @@ $product = null;
             <div class="form-section">
                 <h4><i class="fas fa-info-circle"></i> Basic Information</h4>
                 
-                <div class="row-two-col">
-                    <div class="form-group">
-                        <label for="name">Product Name *</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="e.g., Classic Black Formal Heels" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sku">SKU (Stock Keeping Unit) *</label>
-                        <input type="text" class="form-control" id="sku" name="sku" placeholder="e.g., WS-BLACK-001" required>
-                    </div>
-                </div>
-
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Detailed product description..."></textarea>
+                    <label for="name">Shoe Name *</label>
+                    <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" placeholder="e.g., Classic Black Formal Heels" required>
                 </div>
-            </div>
 
-            <!-- Pricing & Stock Section -->
-            <div class="form-section">
-                <h4><i class="fas fa-money-bill-wave"></i> Pricing & Stock</h4>
-                
-                <div class="row-two-col">
-                    <div class="form-group">
-                        <label for="price">Price (€) *</label>
-                        <input type="number" class="form-control" id="price" name="price" step="0.01" placeholder="0.00" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="quantity">Quantity in Stock *</label>
-                        <input type="number" class="form-control" id="quantity" name="quantity" placeholder="0" required>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Category & Details Section -->
-            <div class="form-section">
-                <h4><i class="fas fa-palette"></i> Category & Details</h4>
-                
                 <div class="row-two-col">
                     <div class="form-group">
                         <label for="gender">Gender *</label>
-                        <select class="form-select" id="gender" name="gender" required>
+                        <select class="form-select" id="gender" name="gender" onchange="updateCategories()" required>
                             <option value="">-- Select Gender --</option>
-                            <option value="Men">Men</option>
-                            <option value="Women">Women</option>
+                            <option value="Men" <?php if($product['gender'] == 'Men') echo 'selected'; ?>>Men</option>
+                            <option value="Women" <?php if($product['gender'] == 'Women') echo 'selected'; ?>>Women</option>
                         </select>
                     </div>
 
@@ -326,100 +305,74 @@ $product = null;
                         <label for="category">Category *</label>
                         <select class="form-select" id="category" name="category_id" required>
                             <option value="">-- Select Category --</option>
-                            <option value="1">Formal</option>
-                            <option value="2">Casual</option>
-                            <option value="3">Wedding Collection</option>
-                            <option value="4">Special Events</option>
-                            <option value="5">Party</option>
-                            <option value="6">Comfort</option>
                         </select>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="color">Color</label>
-                    <input type="text" class="form-control" id="color" name="color" placeholder="e.g., Black, White, Gold">
-                </div>
-
-                <div class="row-two-col">
-                    <div class="form-group">
-                        <label for="size">Size</label>
-                        <select class="form-select" id="size" name="size">
-                            <option value="">-- Select Size --</option>
-                            <option value="35">35</option>
-                            <option value="36">36</option>
-                            <option value="37">37</option>
-                            <option value="38">38</option>
-                            <option value="39">39</option>
-                            <option value="40">40</option>
-                            <option value="41">41</option>
-                            <option value="42">42</option>
-                            <option value="43">43</option>
-                            <option value="44">44</option>
-                            <option value="45">45</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="material">Material</label>
-                        <input type="text" class="form-control" id="material" name="material" placeholder="e.g., Leather, Suede, Synthetic">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="style">Style</label>
-                    <select class="form-select" id="style" name="style">
-                        <option value="">-- Select Style --</option>
-                        <option value="Heels">Heels</option>
-                        <option value="Flats">Flats</option>
-                        <option value="Loafers">Loafers</option>
-                        <option value="Oxfords">Oxfords</option>
-                        <option value="Sandals">Sandals</option>
-                        <option value="Boots">Boots</option>
-                        <option value="Pumps">Pumps</option>
-                        <option value="Ballerinas">Ballerinas</option>
-                    </select>
                 </div>
             </div>
 
-            <!-- Image Section -->
+            <!-- Size Selection Section -->
+            <div class="form-section">
+                <h4><i class="fas fa-expand"></i> Available Sizes *</h4>
+                <p class="text-muted small">Select all available sizes for this shoe</p>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex flex-wrap gap-3">
+                            <?php
+                            $sizes = array(35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45);
+                            foreach($sizes as $size) {
+                                $checked = in_array((string)$size, $available_sizes) ? 'checked' : '';
+                                echo '
+                                    <div class="form-check">
+                                        <input class="form-check-input sizes-check" type="checkbox" name="sizes" value="'.$size.'" id="size'.$size.'" '.$checked.'>
+                                        <label class="form-check-label" for="size'.$size.'">'.$size.'</label>
+                                    </div>
+                                ';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stock Quantity Section -->
+            <div class="form-section">
+                <h4><i class="fas fa-cube"></i> Stock Quantity</h4>
+                
+                <div class="form-group">
+                    <label for="quantity">Quantity in Stock *</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" value="<?php echo intval($product['quantity']); ?>" placeholder="0" min="0" required>
+                </div>
+            </div>
+
+            <!-- Price Section -->
+            <div class="form-section">
+                <h4><i class="fas fa-euro-sign"></i> Price</h4>
+                
+                <div class="form-group">
+                    <label for="price">Price (€) *</label>
+                    <input type="number" class="form-control" id="price" name="price" value="<?php echo floatval($product['price']); ?>" placeholder="0.00" step="0.01" min="0" required>
+                </div>
+            </div>
+
+            <!-- Image Upload Section -->
             <div class="form-section">
                 <h4><i class="fas fa-image"></i> Product Image</h4>
                 
-                <div class="form-group">
+                <?php if(!empty($product['image_url'])): ?>
+                <div class="form-group mb-3">
                     <label>Current Image</label>
-                    <div class="current-image">
-                        <img id="currentImage" class="image-preview" src="#" alt="Current Product Image" style="display:none;">
-                        <p id="noImage" class="text-muted">No image uploaded yet</p>
+                    <div style="margin-bottom: 1rem;">
+                        <img src="../<?php echo htmlspecialchars($product['image_url']); ?>" class="image-preview" alt="Current Product Image" style="display: block; max-width: 200px;">
                     </div>
                 </div>
+                <?php endif; ?>
 
                 <div class="form-group">
-                    <label for="image">Change Product Image</label>
+                    <label for="image">Upload New Product Image</label>
                     <input type="file" class="form-control" id="image" name="image" accept="image/*" onchange="previewNewImage(event)">
                     <small class="text-muted">Leave empty to keep current image. Supported formats: JPG, PNG, GIF (Max 5MB)</small>
-                    <img id="newImagePreview" class="image-preview" src="" alt="New Image Preview" style="display:none;">
-                </div>
-            </div>
-
-            <!-- Status Section -->
-            <div class="form-section">
-                <h4><i class="fas fa-toggle-on"></i> Status</h4>
-                
-                <div class="row-two-col">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="active" name="status" value="1">
-                            <label class="form-check-label" for="active">Active Product</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="featured" name="featured" value="1">
-                            <label class="form-check-label" for="featured">Featured Product</label>
-                        </div>
-                    </div>
+                    <img id="newImagePreview" class="image-preview" src="" alt="New Image Preview" style="display:none; margin-top: 1rem;">
                 </div>
             </div>
 
@@ -439,6 +392,7 @@ $product = null;
     </div>
 
     <script>
+        // Preview new image before upload
         function previewNewImage(event) {
             const file = event.target.files[0];
             const preview = document.getElementById('newImagePreview');
@@ -455,12 +409,55 @@ $product = null;
             }
         }
 
+        // Categories mapping for dynamic dropdown
+        const categories = {
+            'Men': [
+                { id: 1, name: 'Formal' },
+                { id: 2, name: 'Casual' },
+                { id: 3, name: 'Party' },
+                { id: 4, name: 'Comfort' }
+            ],
+            'Women': [
+                { id: 5, name: 'Formal' },
+                { id: 6, name: 'Casual' },
+                { id: 7, name: 'Party' },
+                { id: 8, name: 'Comfort' }
+            ]
+        };
+
+        // Update categories based on selected gender
+        function updateCategories() {
+            const gender = document.getElementById('gender').value;
+            const categorySelect = document.getElementById('category');
+            const currentCategoryId = categorySelect.value;
+            
+            categorySelect.innerHTML = '<option value="">-- Select Category --</option>';
+            
+            if (gender && categories[gender]) {
+                categories[gender].forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat.id;
+                    option.textContent = cat.name;
+                    if (cat.id == currentCategoryId) {
+                        option.selected = true;
+                    }
+                    categorySelect.appendChild(option);
+                });
+            }
+        }
+
+        // Initialize categories on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCategories();
+        });
+
         // Validate form before submit
         document.querySelector('form').addEventListener('submit', function(e) {
             const name = document.getElementById('name').value.trim();
-            const sku = document.getElementById('sku').value.trim();
-            const price = parseFloat(document.getElementById('price').value);
+            const gender = document.getElementById('gender').value;
+            const category = document.getElementById('category').value;
             const quantity = parseInt(document.getElementById('quantity').value);
+            const sizeChecks = document.querySelectorAll('input[name="sizes"]:checked');
 
             if (!name) {
                 alert('Product name is required');
@@ -468,14 +465,20 @@ $product = null;
                 return;
             }
 
-            if (!sku) {
-                alert('SKU is required');
+            if (!gender) {
+                alert('Gender is required');
                 e.preventDefault();
                 return;
             }
 
-            if (isNaN(price) || price <= 0) {
-                alert('Valid price is required');
+            if (!category) {
+                alert('Category is required');
+                e.preventDefault();
+                return;
+            }
+
+            if (sizeChecks.length === 0) {
+                alert('Please select at least one size');
                 e.preventDefault();
                 return;
             }

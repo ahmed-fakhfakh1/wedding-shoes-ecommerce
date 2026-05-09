@@ -11,23 +11,28 @@ require_once('../class/product.class.php');
 
 // Get form data
 $name = isset($_POST['name']) ? $_POST['name'] : '';
-$sku = isset($_POST['sku']) ? $_POST['sku'] : '';
-$description = isset($_POST['description']) ? $_POST['description'] : '';
 $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
 $category_id = isset($_POST['category_id']) ? intval($_POST['category_id']) : 0;
-$price = isset($_POST['price']) ? floatval($_POST['price']) : 0;
 $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 0;
-$color = isset($_POST['color']) ? $_POST['color'] : '';
-$size = isset($_POST['size']) ? $_POST['size'] : '';
-$material = isset($_POST['material']) ? $_POST['material'] : '';
-$style = isset($_POST['style']) ? $_POST['style'] : '';
-$status = isset($_POST['status']) ? 1 : 0;
-$featured = isset($_POST['featured']) ? 1 : 0;
+$price = isset($_POST['price']) ? floatval($_POST['price']) : 0;
+$sizes = isset($_POST['sizes']) ? $_POST['sizes'] : array();
 
-// Initialize image URL as empty
-$image_url = '';
+// Ensure sizes is always an array (in case only one is selected)
+if (!is_array($sizes)) {
+    $sizes = array($sizes);
+}
+
+// Validate required fields
+if (!$name || !$gender || !$category_id || empty($sizes) || $quantity < 0 || $price < 0) {
+    header('Location: ../admin/create_product.php?error=Missing required fields');
+    exit();
+}
+
+// Convert sizes array to comma-separated string
+$sizes_str = implode(',', $sizes);
 
 // Handle image upload
+$image_url = '';
 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $upload_dir = '../uploads/products/';
     
@@ -39,7 +44,6 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $file_name = $_FILES['image']['name'];
     $file_tmp = $_FILES['image']['tmp_name'];
     $file_size = $_FILES['image']['size'];
-    $file_error = $_FILES['image']['error'];
     
     // Allowed file types
     $allowed = array('jpg', 'jpeg', 'png', 'gif');
@@ -57,44 +61,27 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
             // Move uploaded file
             if (move_uploaded_file($file_tmp, $destination)) {
                 $image_url = 'uploads/products/' . $new_filename;
-            } else {
-                $error = "Failed to upload image.";
             }
-        } else {
-            $error = "File size exceeds 5MB limit.";
         }
-    } else {
-        $error = "Invalid file type. Only JPG, PNG, GIF allowed.";
     }
-}
-
-// Validate required fields
-if (!$name || !$sku || !$gender || !$category_id || !$price) {
-    header('Location: ../admin/create_product.php?error=Missing required fields');
-    exit();
 }
 
 // Create product object and set properties
 $prod = new product();
 $prod->name = $name;
-$prod->sku = $sku;
-$prod->description = $description;
 $prod->gender = $gender;
 $prod->category_id = $category_id;
-$prod->price = $price;
+$prod->size = $sizes_str;
 $prod->quantity = $quantity;
-$prod->color = $color;
-$prod->size = $size;
-$prod->material = $material;
-$prod->style = $style;
+$prod->price = $price;
+$prod->sku = $gender . '-' . strtoupper(str_replace(' ', '', $name)) . '-' . time();
+$prod->status = 1;
 $prod->image_url = $image_url;
-$prod->status = $status;
-$prod->featured = $featured;
 
 // Insert product
 try {
-    $prod->insert();
-    header('Location: ../admin/products.php?success=Product created successfully');
+    $product_id = $prod->insert();
+    header('Location: ../admin/edit_product.php?id=' . $product_id . '&created=1');
     exit();
 } catch (Exception $e) {
     header('Location: ../admin/create_product.php?error=Error creating product: ' . $e->getMessage());

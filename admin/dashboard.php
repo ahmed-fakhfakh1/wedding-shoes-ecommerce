@@ -7,7 +7,30 @@ if (!isset($_SESSION['user_id']) || $_SESSION['is_admin'] != 1) {
     exit();
 }
 
+require_once('../class/product.class.php');
+require_once('../class/order.class.php');
+require_once('../includes/config.php');
+
 $page_title = "Admin Dashboard";
+
+// Get database counts
+$cnx = new connexion();
+$pdo = $cnx->cnxBase();
+
+// Count total products
+$prod = new product();
+$products = $prod->getAllProducts();
+$total_products = count($products);
+
+// Count total users
+$users_result = $pdo->query("SELECT COUNT(*) as total FROM users WHERE is_admin = 0");
+$users_row = $users_result->fetch(PDO::FETCH_ASSOC);
+$total_users = $users_row['total'];
+
+// Count total orders
+$order = new Order();
+$orders = $order->getAllOrders();
+$total_orders = count($orders);
 ?>
 
 <!DOCTYPE html>
@@ -334,8 +357,8 @@ $page_title = "Admin Dashboard";
                     <i class="fas fa-shopping-bag"></i>
                 </div>
                 <h6>Total Orders</h6>
-                <div class="number">156</div>
-                <small class="text-muted">+12 this month</small>
+                <div class="number"><?php echo $total_orders; ?></div>
+                <small class="text-muted">All orders</small>
             </div>
 
             <div class="stat-card">
@@ -343,17 +366,17 @@ $page_title = "Admin Dashboard";
                     <i class="fas fa-box"></i>
                 </div>
                 <h6>Total Products</h6>
-                <div class="number">42</div>
-                <small class="text-muted">In warehouse</small>
+                <div class="number"><?php echo $total_products; ?></div>
+                <small class="text-muted">All products</small>
             </div>
 
             <div class="stat-card">
                 <div class="icon icon-orange">
                     <i class="fas fa-users"></i>
                 </div>
-                <h6>Total Users</h6>
-                <div class="number">287</div>
-                <small class="text-muted">+18 new users</small>
+                <h6>Total Clients</h6>
+                <div class="number"><?php echo $total_users; ?></div>
+                <small class="text-muted">Registered users</small>
             </div>
         </div>
 
