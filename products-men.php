@@ -38,7 +38,7 @@ $category_names = [
 <section style="background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%); color: white; padding: 50px 0; text-align: center;">
     <div class="container">
         <h1 class="display-4 fw-bold mb-2">Men's Shoes</h1>
-        <p class="lead">Elegant options for grooms and groomsmen</p>
+        <p class="lead">Premium shoes for every style and occasion</p>
     </div>
 </section>
 
