@@ -31,13 +31,12 @@ include 'includes/header.php';
                                 class="form-control" 
                                 id="fullname" 
                                 name="fullname" 
-                                placeholder="John Doe" 
+                                
                                 required
                                 style="border: 1px solid #dee2e6; padding: 0.75rem 1rem;"
                             >
                         </div>
                         <div class="invalid-feedback" style="display: block;">
-                            Please provide your full name.
                         </div>
                     </div>
 
@@ -53,15 +52,13 @@ include 'includes/header.php';
                                 class="form-control" 
                                 id="email" 
                                 name="email" 
-                                placeholder="your@email.com" 
+                               
                                 required
                                 style="border: 1px solid #dee2e6; padding: 0.75rem 1rem;"
                             >
                         </div>
                         <div class="invalid-feedback" style="display: block;">
-                            Please provide a valid email address.
                         </div>
-                        <small class="text-muted d-block mt-1">We'll never share your email with anyone.</small>
                     </div>
 
                     <!-- Phone Field -->
@@ -76,13 +73,11 @@ include 'includes/header.php';
                                 class="form-control" 
                                 id="phone" 
                                 name="phone" 
-                                placeholder="+33 1 23 45 67 89" 
                                 required
                                 style="border: 1px solid #dee2e6; padding: 0.75rem 1rem;"
                             >
                         </div>
                         <div class="invalid-feedback" style="display: block;">
-                            Please provide a valid phone number.
                         </div>
                     </div>
 
@@ -98,13 +93,12 @@ include 'includes/header.php';
                                 class="form-control" 
                                 id="address" 
                                 name="address" 
-                                placeholder="123 Wedding Street"
+
                                 required
                                 style="border: 1px solid #dee2e6; padding: 0.75rem 1rem;"
                             >
                         </div>
                         <div class="invalid-feedback" style="display: block;">
-                            Please provide your address.
                         </div>
                     </div>
 
@@ -120,7 +114,6 @@ include 'includes/header.php';
                                 class="form-control" 
                                 id="password" 
                                 name="password" 
-                                placeholder="Create a strong password" 
                                 required
                                 minimum="6"
                                 style="border: 1px solid #dee2e6; padding: 0.75rem 1rem;"
@@ -134,10 +127,7 @@ include 'includes/header.php';
                                 <i class="fas fa-eye" id="eyeIcon1" style="color: #c41e3a;"></i>
                             </button>
                         </div>
-                        <div class="invalid-feedback" style="display: block;">
-                            Password must be at least 6 characters.
-                        </div>
-                        <small class="text-muted d-block mt-1">At least 6 characters with uppercase, lowercase, and numbers</small>
+                        
                     </div>
 
                     <!-- Confirm Password Field -->
@@ -152,7 +142,6 @@ include 'includes/header.php';
                                 class="form-control" 
                                 id="confirm_password" 
                                 name="confirm_password" 
-                                placeholder="Confirm your password" 
                                 required
                                 style="border: 1px solid #dee2e6; padding: 0.75rem 1rem;"
                             >
@@ -165,54 +154,14 @@ include 'includes/header.php';
                                 <i class="fas fa-eye" id="eyeIcon2" style="color: #c41e3a;"></i>
                             </button>
                         </div>
-                        <div class="invalid-feedback" style="display: block;">
-                            Passwords do not match.
-                        </div>
+                        
                     </div>
 
                     <!-- Terms & Conditions -->
-                    <div class="mb-4">
-                        <div class="form-check">
-                            <input 
-                                class="form-check-input" 
-                                type="checkbox" 
-                                id="terms" 
-                                name="terms"
-                                required
-                                style="border-color: #c41e3a; cursor: pointer;"
-                            >
-                            <label class="form-check-label" for="terms">
-                                I agree to the
-                                <a href="terms.php" style="color: #c41e3a; text-decoration: none;">
-                                    Terms of Service
-                                </a>
-                                and
-                                <a href="privacy.php" style="color: #c41e3a; text-decoration: none;">
-                                    Privacy Policy
-                                </a>
-                            </label>
-                        </div>
-                        <div class="invalid-feedback" style="display: block;">
-                            You must agree to the terms and conditions.
-                        </div>
-                    </div>
+                    
 
                     <!-- Newsletter Opt-in -->
-                    <div class="mb-4">
-                        <div class="form-check">
-                            <input 
-                                class="form-check-input" 
-                                type="checkbox" 
-                                id="newsletter" 
-                                name="newsletter"
-                                style="border-color: #c41e3a; cursor: pointer;"
-                                checked
-                            >
-                            <label class="form-check-label" for="newsletter">
-                                Send me exclusive offers and updates
-                            </label>
-                        </div>
-                    </div>
+                  
 
                     <!-- Register Button -->
                     <button 

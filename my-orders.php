@@ -1,4 +1,15 @@
 <?php
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 // Set page title for header
 $page_title = "My Orders";
 
@@ -6,12 +17,6 @@ $page_title = "My Orders";
 include 'includes/header.php';
 require_once 'includes/config.php';
 require_once 'class/order.class.php';
-
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
 
 // Get user's orders
 $order = new Order();
