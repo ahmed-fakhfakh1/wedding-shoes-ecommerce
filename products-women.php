@@ -37,7 +37,7 @@ $category_names = [
 <!-- Page Header -->
 <section style="background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%); color: white; padding: 50px 0; text-align: center;">
     <div class="container">
-        <h1 class="display-4 fw-bold mb-2">Women's Wedding Shoes</h1>
+        <h1 class="display-4 fw-bold mb-2">Women's Shoes</h1>
         <p class="lead">Exquisite choices for brides and bridesmaids</p>
     </div>
 </section>

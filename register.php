@@ -13,7 +13,7 @@ include 'includes/header.php';
                     <i class="fas fa-user-plus"></i>
                 </div>
                 <h3 class="fw-bold mb-2">Create Account</h3>
-                <p class="mb-0" style="opacity: 0.9;">Join Wedding Shoes for exclusive offers</p>
+                <p class="mb-0" style="opacity: 0.9;">Join Shoes Hub for exclusive offers</p>
             </div>
 
             <!-- Form Body -->

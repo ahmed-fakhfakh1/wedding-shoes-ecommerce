@@ -12,8 +12,8 @@ include 'includes/header.php';
                 <div style="font-size: 3rem; margin-bottom: 1rem;">
                     <i class="fas fa-shoe-prints"></i>
                 </div>
-                <h3 class="fw-bold mb-2">Welcome Back</h3>
-                <p class="mb-0" style="opacity: 0.9;">Sign in to your Wedding Shoes account</p>
+                <h3 class="fw-bold mb-2">Welcome to Shoes Hub</h3>
+                <p class="mb-0" style="opacity: 0.9;">Sign in to your Shoes Hub account</p>
             </div>
 
             <!-- Form Body -->

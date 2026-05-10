@@ -8,11 +8,11 @@
                 <!-- Company Info -->
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h5 class="mb-3">
-                        <i class="fas fa-shoe-prints"></i> Wedding Shoes
+                        <i class="fas fa-shoe-prints"></i> Shoes Hub
                     </h5>
                     <p class="text-muted">
-                        Your premier destination for elegant and comfortable wedding shoes for men and women. 
-                        Making your special day even more beautiful.
+                        Your premier destination for quality and comfortable shoes for men and women. 
+                        Find the perfect pair for every style and occasion.
                     </p>
                     <div class="social-links">
                         <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
@@ -39,13 +39,13 @@
                     <h5 class="mb-3">Contact Us</h5>
                     <ul class="list-unstyled text-muted">
                         <li class="mb-2">
-                            <i class="fas fa-map-marker-alt"></i> 123 Wedding Street, Paris, France
+                            <i class="fas fa-map-marker-alt"></i> 123 Street, City, Country
                         </li>
                         <li class="mb-2">
-                            <i class="fas fa-phone"></i> +33 1 23 45 67 89
+                            <i class="fas fa-phone"></i> +216 XX XXX XXXX
                         </li>
                         <li class="mb-2">
-                            <i class="fas fa-envelope"></i> info@weddingshoes.com
+                            <i class="fas fa-envelope"></i> info@shoeshub.com
                         </li>
                         <li>
                             <i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM | Sat-Sun: 10AM - 4PM
@@ -54,29 +54,12 @@
                 </div>
             </div>
 
-            <hr class="bg-secondary">
-
-            <!-- Newsletter Section -->
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <h6>Subscribe to our Newsletter</h6>
-                    <p class="text-muted small">Get updates on new products and special offers</p>
-                </div>
-                <div class="col-md-6">
-                    <form action="subscribe.php" method="POST" class="d-flex">
-                        <input type="email" name="email" class="form-control form-control-sm" placeholder="Enter your email" required>
-                        <button type="submit" class="btn btn-outline-light btn-sm ms-2">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-
-            <hr class="bg-secondary">
-
+          
             <!-- Bottom Footer -->
             <div class="row">
                 <div class="col-md-6">
                     <p class="text-muted small mb-0">
-                        &copy; 2026 Wedding Shoes. All Rights Reserved.
+                        &copy; 2026 Shoes Hub. All Rights Reserved.
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">

@@ -21,7 +21,7 @@ $products = $prod->getAllProducts();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $page_title; ?> - Wedding Shoes Admin</title>
+    <title><?php echo $page_title; ?> - Shoes Hub Admin</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -240,7 +240,7 @@ $products = $prod->getAllProducts();
     <!-- Sidebar -->
     <aside class="sidebar">
         <div class="brand">
-            <h3><i class="fas fa-shoe-prints"></i> Wedding Shoes</h3>
+            <h3><i class="fas fa-shoe-prints"></i> Shoes Hub</h3>
             <small>Admin Panel</small>
         </div>
 
@@ -277,7 +277,7 @@ $products = $prod->getAllProducts();
         <div class="top-bar">
             <div>
                 <h2>Manage Products</h2>
-                <small class="text-muted">View, edit, and manage all wedding shoes</small>
+                <small class="text-muted">View, edit, and manage all products</small>
             </div>
             <a href="create_product.php" class="btn btn-primary btn-lg">
                 <i class="fas fa-plus"></i> Add New Product
