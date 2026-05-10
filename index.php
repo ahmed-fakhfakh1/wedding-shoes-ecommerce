@@ -28,9 +28,7 @@ include 'includes/header.php';
                     <p class="lead mb-3" style="font-size: 1.1rem;">Premium Quality Shoes for Every Style & Occasion</p>
                     <p class="mb-4" style="font-size: 0.95rem; opacity: 0.95;">Discover our wide selection of comfortable, stylish shoes for men, women, and every occasion.</p>
                     <div class="d-flex gap-2 flex-wrap">
-                        <a href="products.php" class="btn btn-light btn-sm px-4">
-                            <i class="fas fa-shoe-prints me-2"></i> Shop Shoes
-                        </a>
+                     
                         <a href="#featured" class="btn btn-outline-light btn-sm px-4">
                             <i class="fas fa-arrow-down me-2"></i> Explore
                         </a>
@@ -57,7 +55,7 @@ include 'includes/header.php';
         <!-- Men's Shoes -->
         <div class="col-md-6 mb-4">
             <a href="products-men.php" style="text-decoration: none;">
-                <div class="category-card" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.9), rgba(27, 27, 27, 0.9)), url('https://via.placeholder.com/500x300?text=Men+Shoes'); background-size: cover; background-position: center; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                <div class="category-card" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/man_shoes.jpg'); background-size: cover; background-position: center; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
                     <div class="text-center">
                         <h3 class="display-6 fw-bold mb-3">
                             <i class="fas fa-shoe-prints"></i> Men's Shoes
@@ -72,7 +70,7 @@ include 'includes/header.php';
         <!-- Women's Shoes -->
         <div class="col-md-6 mb-4">
             <a href="products-women.php" style="text-decoration: none;">
-                <div class="category-card" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.9), rgba(27, 27, 27, 0.9)), url('https://via.placeholder.com/500x300?text=Women+Shoes'); background-size: cover; background-position: center; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                <div class="category-card" style="background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/woman_shoes.jpg'); background-size: cover; background-position: center; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
                     <div class="text-center">
                         <h3 class="display-6 fw-bold mb-3">
                             <i class="fas fa-crown"></i> Women's Shoes

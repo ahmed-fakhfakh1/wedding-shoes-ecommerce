@@ -65,7 +65,7 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="col-md-6">
+                <div class="col-md-6" id="contact">
                     <h5 class="mb-2">Quick Contact</h5>
                     <!-- Display messages -->
                     <?php
