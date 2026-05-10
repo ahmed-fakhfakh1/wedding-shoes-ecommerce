@@ -189,23 +189,6 @@ $products = $prod->getAllProducts();
             border-radius: 5px;
         }
 
-        .search-box {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 0.75rem;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-        }
-
-        .search-box .btn {
-            padding: 0.75rem 1.5rem;
-        }
-
         .badge-stock {
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -301,21 +284,8 @@ $products = $prod->getAllProducts();
             </a>
         </div>
 
-        <!-- Search & Filter -->
+        <!-- Products Table -->
         <div class="container-section">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search products by name or ID..." class="form-control">
-                <select id="categoryFilter" class="form-control" style="max-width: 200px;">
-                    <option value="">All Categories</option>
-                    <option value="men">Men's Shoes</option>
-                    <option value="women">Women's Shoes</option>
-                </select>
-                <button class="btn btn-primary" onclick="filterProducts()">
-                    <i class="fas fa-filter"></i> Filter
-                </button>
-            </div>
-
-            <!-- Products Table -->
             <div class="table-container">
                 <table class="table table-hover">
                     <thead>
@@ -421,11 +391,5 @@ $products = $prod->getAllProducts();
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        function filterProducts() {
-            alert('Filter functionality will be added in backend');
-        }
-    </script>
 </body>
 </html>
