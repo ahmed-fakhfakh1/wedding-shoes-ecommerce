@@ -1,0 +1,96 @@
+@startuml Wedding Shoes E-Commerce Class Diagram
+
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F5F5F5
+skinparam classBorderColor #c41e3a
+skinparam classArrowColor #c41e3a
+skinparam classAttributeIconSize 0
+
+title Wedding Shoes E-Commerce Platform - Class Diagram
+
+class User {
+    - id: int
+    - name: string
+    - address: string
+    - email: string
+    - password: string
+    - phone: string
+    
+    + insert(): void
+    + createUser(): void
+    + login(): User | false
+}
+
+class Product {
+    - id: int
+    - name: string
+    
+    - gender: string
+    - category_id: int
+    - size: string
+    - quantity: int
+    - price: float
+    - image_url: string
+    - status: int
+    - created_at: datetime
+    - updated_at: datetime
+    
+    + insert(): int
+    + getAllProducts(): array
+    + getProduct(id): array
+    + getProductsByGender(gender): array
+    + getProductsByCategory(category_id): array
+    + searchProducts(keyword): array
+    + getActiveProducts(): array
+    + updateProduct(): void
+    + deleteProduct(id): void
+}
+
+class Order {
+    - id: int
+    - user_id: int
+    - product_id: int
+    - product_name: string
+    - price: float
+    - quantity: int
+    - email: string
+    - name: string
+    - address: string
+    - card_number: string
+    - order_date: datetime
+    - status: string
+    
+    + createOrder(): int
+    + getAllOrders(): array
+    + getOrdersByUser(user_id): array
+    + getOrder(id): array
+    + updateOrderStatus(id, status): void
+    + deleteOrder(id): void
+}
+
+class Connexion {
+    + cnxBase(): PDO
+}
+
+User "1" --> "*" Order : places
+Product "1" --> "*" Order : is ordered in
+Order "1" --> "1" Connexion : uses
+User "1" --> "1" Connexion : uses
+Product "1" --> "1" Connexion : uses
+
+note right of User
+    Manages user accounts
+    and authentication
+end note
+
+note right of Product
+    Manages wedding shoe
+    product catalog
+end note
+
+note right of Order
+    Handles customer orders
+    and order management
+end note
+
+@enduml

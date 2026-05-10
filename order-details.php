@@ -134,12 +134,12 @@ if (!$ord || $ord['user_id'] != $_SESSION['user_id']) {
                         </div>
                         <div class="col-md-4">
                             <p><strong>Unit Price:</strong></p>
-                            <p class="text-muted">€<?php echo number_format(floatval($ord['price']), 2, ',', '.'); ?></p>
+                            <p class="text-muted">TND <?php echo number_format(floatval($ord['price']), 2, ',', '.'); ?></p>
                         </div>
                         <div class="col-md-4">
                             <p><strong>Total:</strong></p>
                             <p class="text-muted fw-bold" style="color: #c41e3a; font-size: 1.1rem;">
-                                €<?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?>
+                                TND <?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?>
                             </p>
                         </div>
                     </div>
@@ -188,14 +188,14 @@ if (!$ord || $ord['user_id'] != $_SESSION['user_id']) {
 
                     <div class="d-flex justify-content-between mb-2">
                         <span>Subtotal:</span>
-                        <span>€<?php echo number_format(floatval($ord['price']), 2, ',', '.'); ?></span>
+                        <span>TND <?php echo number_format(floatval($ord['price']), 2, ',', '.'); ?></span>
                     </div>
 
                     <hr style="margin: 1rem 0;">
 
                     <div class="d-flex justify-content-between fw-bold" style="font-size: 1.2rem; color: #c41e3a;">
                         <span>Total:</span>
-                        <span>€<?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?></span>
+                        <span>TND <?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?></span>
                     </div>
 
                     <hr style="margin: 1rem 0;">

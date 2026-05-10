@@ -380,7 +380,7 @@ $products = $prod->getAllProducts();
                                 <small class="text-muted">SKU: <?php echo htmlspecialchars($product['sku']); ?></small>
                             </td>
                             <td><span class="badge <?php echo $gender_badge; ?>"><?php echo $product['gender']; ?></span></td>
-                            <td><strong>€<?php echo number_format($product['price'], 2); ?></strong></td>
+                            <td><strong>TND <?php echo number_format($product['price'], 2); ?></strong></td>
                             <td>
                                 <span class="badge badge-stock <?php echo $stock_badge; ?>"><?php echo $stock_status; ?></span>
                             </td>

@@ -347,6 +347,9 @@ $total_orders = count($orders);
                 <div class="user-avatar">
                     <?php echo strtoupper(substr($_SESSION['user_name'], 0, 1)); ?>
                 </div>
+                <a href="../index.php" class="btn btn-outline-primary btn-sm" style="border-color: var(--primary-color); color: var(--primary-color);">
+                    <i class="fas fa-home me-2"></i> Welcome Page
+                </a>
             </div>
         </div>
 

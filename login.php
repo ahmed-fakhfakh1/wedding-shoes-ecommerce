@@ -72,29 +72,6 @@ include 'includes/header.php';
                         </div>
                     </div>
 
-                    <!-- Remember Me & Forgot Password -->
-                    <div class="row mb-4">
-                        <div class="col-6">
-                            <div class="form-check">
-                                <input 
-                                    class="form-check-input" 
-                                    type="checkbox" 
-                                    id="rememberMe" 
-                                    name="remember"
-                                    style="border-color: #c41e3a; cursor: pointer;"
-                                >
-                                <label class="form-check-label" for="rememberMe">
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-6 text-end">
-                            <a href="forgot_password.php" style="color: #c41e3a; text-decoration: none; font-size: 0.9rem;">
-                                Forgot Password?
-                            </a>
-                        </div>
-                    </div>
-
                     <!-- Login Button -->
                     <button 
                         type="submit" 

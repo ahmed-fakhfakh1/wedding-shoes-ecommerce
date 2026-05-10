@@ -87,7 +87,7 @@ include 'includes/header.php';
                     <h5 class="card-title fw-bold mb-2">Classic Black Formal Shoes</h5>
                     <p class="card-text text-muted small mb-3">Premium Italian leather with elegant stitching. Perfect for traditional weddings.</p>
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <p class="product-price mb-0">€149.99</p>
+                        <p class="product-price mb-0">TND 149.99</p>
                         <div class="text-warning">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -117,7 +117,7 @@ include 'includes/header.php';
                     <h5 class="card-title fw-bold mb-2">Elegant Pearl White Heels</h5>
                     <p class="card-text text-muted small mb-3">Stunning satin heels with crystal embellishments. The perfect bride's choice.</p>
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <p class="product-price mb-0">€189.99</p>
+                        <p class="product-price mb-0">TND 189.99</p>
                         <div class="text-warning">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -147,7 +147,7 @@ include 'includes/header.php';
                     <h5 class="card-title fw-bold mb-2">Brown Leather Oxford</h5>
                     <p class="card-text text-muted small mb-3">Sophisticated brown oxford shoes. Versatile for any wedding style.</p>
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <p class="product-price mb-0"><del class="text-muted">€179.99</del> €129.99</p>
+                        <p class="product-price mb-0"><del class="text-muted">TND 179.99</del> TND 129.99</p>
                         <div class="text-warning">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -191,7 +191,7 @@ include 'includes/header.php';
                 <i class="fas fa-truck"></i>
             </div>
             <h5 class="fw-bold mb-2">Fast Delivery</h5>
-            <p class="text-muted">Express shipping available. Free over €100</p>
+            <p class="text-muted">Express shipping available. Free over TND 100</p>
         </div>
 
         <div class="col-md-3 mb-4 text-center">

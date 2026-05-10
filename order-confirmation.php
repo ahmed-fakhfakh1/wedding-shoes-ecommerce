@@ -129,14 +129,14 @@ $success_message = isset($_GET['success']) ? htmlspecialchars($_GET['success']) 
                         <div class="col-md-4">
                             <p class="mb-0">
                                 <strong>Unit Price:</strong><br>
-                                €<?php echo number_format(floatval($ord['price']), 2, ',', '.'); ?>
+                                TND <?php echo number_format(floatval($ord['price']), 2, ',', '.'); ?>
                             </p>
                         </div>
                         <div class="col-md-4">
                             <p class="mb-0">
                                 <strong>Total:</strong><br>
                                 <strong style="color: #c41e3a; font-size: 1.1rem;">
-                                    €<?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?>
+                                    TND <?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?>
                                 </strong>
                             </p>
                         </div>

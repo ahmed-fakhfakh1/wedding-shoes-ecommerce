@@ -350,7 +350,7 @@ $available_sizes = !empty($product['size']) ? explode(',', $product['size']) : a
                 <h4><i class="fas fa-euro-sign"></i> Price</h4>
                 
                 <div class="form-group">
-                    <label for="price">Price (€) *</label>
+                    <label for="price">Price (TND) *</label>
                     <input type="number" class="form-control" id="price" name="price" value="<?php echo floatval($product['price']); ?>" placeholder="0.00" step="0.01" min="0" required>
                 </div>
             </div>

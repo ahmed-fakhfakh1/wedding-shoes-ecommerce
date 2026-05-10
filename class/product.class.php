@@ -147,8 +147,3 @@ class product {
         $pdo->exec($req);
     }
 }
-
-?>
-}
-
-?>

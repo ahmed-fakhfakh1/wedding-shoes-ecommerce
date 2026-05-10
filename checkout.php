@@ -85,7 +85,7 @@ $category_names = [
                     <div class="mb-3">
                         <div class="d-flex justify-content-between mb-2">
                             <span>Product Price:</span>
-                            <strong>€<?php echo number_format(floatval($prod['price']), 2, ',', '.'); ?></strong>
+                            <strong>TND <?php echo number_format(floatval($prod['price']), 2, ',', '.'); ?></strong>
                         </div>
                     </div>
                     
@@ -94,7 +94,7 @@ $category_names = [
                     <!-- Total -->
                     <div class="d-flex justify-content-between">
                         <h6 class="fw-bold">Total Amount:</h6>
-                        <h6 class="fw-bold" style="color: #c41e3a;">€<?php echo number_format(floatval($prod['price']), 2, ',', '.'); ?></h6>
+                        <h6 class="fw-bold" style="color: #c41e3a;">TND <?php echo number_format(floatval($prod['price']), 2, ',', '.'); ?></h6>
                     </div>
                 </div>
             </div>
@@ -142,14 +142,7 @@ $category_names = [
                         <hr>
                         
                         <!-- Terms and Order Button -->
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
-                                <label class="form-check-label" for="agree">
-                                    I agree to the terms and conditions and confirm this order
-                                </label>
-                            </div>
-                        </div>
+                        
                         
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-lg" style="background-color: #c41e3a; color: white; border: none;">

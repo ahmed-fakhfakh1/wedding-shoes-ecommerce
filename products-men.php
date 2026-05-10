@@ -112,7 +112,7 @@ $category_names = [
                             <!-- Price and Stock -->
                             <div class="d-flex justify-content-between align-items-center mb-3 pt-2 border-top">
                                 <p class="card-text fw-bold" style="font-size: 1.3rem; color: #c41e3a;">
-                                    €<?php echo number_format(floatval($prod['price']), 2, ',', '.'); ?>
+                                    TND <?php echo number_format(floatval($prod['price']), 2, ',', '.'); ?>
                                 </p>
                                 <p class="card-text text-muted small">
                                     <?php echo intval($prod['quantity']); ?> in stock

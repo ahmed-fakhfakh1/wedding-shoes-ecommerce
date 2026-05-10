@@ -328,10 +328,10 @@ $page_title = "Create Product";
 
             <!-- Price Section -->
             <div class="form-section">
-                <h4><i class="fas fa-euro-sign"></i> Price</h4>
+                <h4><i class="fas fa-tag"></i> Price</h4>
                 
                 <div class="form-group">
-                    <label for="price">Price (€) *</label>
+                    <label for="price">Price (TND) *</label>
                     <input type="number" class="form-control" id="price" name="price" placeholder="0.00" step="0.01" min="0" required>
                 </div>
             </div>

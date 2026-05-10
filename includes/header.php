@@ -68,7 +68,6 @@ if (session_status() === PHP_SESSION_NONE) {
                             <i class="fas fa-user-circle"></i> <?php echo htmlspecialchars($_SESSION['user_name']); ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="profile.php"><i class="fas fa-user"></i> My Profile</a></li>
                             <li><a class="dropdown-item" href="my-orders.php"><i class="fas fa-list"></i> My Orders</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-danger" href="controllers/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>

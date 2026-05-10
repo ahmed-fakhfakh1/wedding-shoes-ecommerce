@@ -345,29 +345,12 @@ if (!$ord) {
                 </div>
                 <div class="detail-item">
                     <label>Unit Price</label>
-                    <p>€<?php echo number_format(floatval($ord['price']), 2, ',', '.'); ?></p>
+                    <p>TND <?php echo number_format(floatval($ord['price']), 2, ',', '.'); ?></p>
                 </div>
                 <div class="detail-item">
                     <label>Total Amount</label>
                     <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: bold;">
-                        €<?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Payment Information -->
-        <div class="details-card">
-            <h5><i class="fas fa-credit-card me-2"></i> Payment Information</h5>
-            <div class="detail-row">
-                <div class="detail-item">
-                    <label>Card Number</label>
-                    <p>
-                        <?php 
-                            $card = $ord['card_number'];
-                            $masked = str_repeat('*', strlen($card) - 4) . substr($card, -4);
-                            echo htmlspecialchars($masked);
-                        ?>
+                        TND <?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?>
                     </p>
                 </div>
             </div>

@@ -53,7 +53,7 @@ $orders = $order->getOrdersByUser($_SESSION['user_id']);
                                     </td>
                                     <td>
                                         <strong style="color: #c41e3a;">
-                                            €<?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?>
+                                            TND <?php echo number_format(floatval($ord['price']) * intval($ord['quantity']), 2, ',', '.'); ?>
                                         </strong>
                                     </td>
                                     <td>
