@@ -35,7 +35,7 @@ $category_names = [
 ?>
 
 <!-- Page Header -->
-<section style="background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%); color: white; padding: 50px 0; text-align: center;">
+<section style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.8), rgba(27, 27, 27, 0.8)), url('images/womanbanner.jpg'); background-size: cover; background-position: center; color: white; padding: 100px 0; text-align: center;">
     <div class="container">
         <h1 class="display-4 fw-bold mb-2">Women's Shoes</h1>
         <p class="lead">Stylish shoes for every occasion</p>
