@@ -17,23 +17,33 @@ $page_title = "Home";
 include 'includes/header.php';
 ?>
 
-<!-- Hero Section with Carousel Style -->
-<section class="hero-section mb-5" style="background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%); color: white; padding: 100px 0; text-align: center; position: relative; overflow: hidden;">
-    <div class="hero-content" style="position: relative; z-index: 2;">
-        <h1 class="display-3 fw-bold mb-3 animated-text">Welcome to Shoes Hub</h1>
-        <p class="lead mb-4" style="font-size: 1.4rem;">Premium Quality Shoes for Every Style & Occasion</p>
-        <p class="mb-5" style="font-size: 1.1rem; opacity: 0.95;">Discover our wide selection of comfortable, stylish shoes for men, women, and every occasion</p>
-        <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="products.php" class="btn btn-light btn-lg px-5">
-                <i class="fas fa-shoe-prints me-2"></i> Shop Shoes
-            </a>
-            <a href="#featured" class="btn btn-outline-light btn-lg px-5">
-                <i class="fas fa-arrow-down me-2"></i> Explore
-            </a>
+<!-- Banner Section with Text and Image -->
+<section class="banner-section mb-5" style="background: white; padding: 0;">
+    <div class="container-fluid" style="padding: 0;">
+        <div class="row" style="margin: 0;">
+            <!-- Left Side - Text Content -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%); color: white; padding: 30px 40px; min-height: 220px;">
+                <div class="text-content">
+                    <h1 class="display-4 fw-bold mb-3">Welcome to Shoes Hub</h1>
+                    <p class="lead mb-3" style="font-size: 1.1rem;">Premium Quality Shoes for Every Style & Occasion</p>
+                    <p class="mb-4" style="font-size: 0.95rem; opacity: 0.95;">Discover our wide selection of comfortable, stylish shoes for men, women, and every occasion.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="products.php" class="btn btn-light btn-sm px-4">
+                            <i class="fas fa-shoe-prints me-2"></i> Shop Shoes
+                        </a>
+                        <a href="#featured" class="btn btn-outline-light btn-sm px-4">
+                            <i class="fas fa-arrow-down me-2"></i> Explore
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side - Banner Image -->
+            <div class="col-md-6" style="padding: 0; overflow: hidden; min-height: 220px;">
+                <img src="images/banner.jpg" alt="Shoes Hub Banner" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
         </div>
     </div>
-    <!-- Decorative element -->
-    <div style="position: absolute; bottom: -50px; right: -50px; width: 300px; height: 300px; background: rgba(255,255,255,0.1); border-radius: 50%; z-index: 1;"></div>
 </section>
 
 <!-- Category Section -->
@@ -88,15 +98,11 @@ include 'includes/header.php';
         <div class="col-md-4 mb-4">
             <div class="card product-card h-100 shadow-lg" style="border: none; border-radius: 10px;">
                 <div class="position-relative overflow-hidden" style="height: 280px;">
-                    <img src="https://via.placeholder.com/400x300?text=Classic+Black+Formal" class="card-img-top h-100 w-100" alt="Classic Black Formal Shoes" style="object-fit: cover;">
-                    <span class="product-category">Men's</span>
-                    <div class="position-absolute top-0 end-0 p-3">
-                        <span class="badge bg-danger">New</span>
-                    </div>
+                    <img src="images/party_shoe.jpg" class="card-img-top h-100 w-100" alt="Formal Party Shoes" style="object-fit: cover;">
                 </div>
                 <div class="card-body" style="padding: 1.5rem;">
-                    <h5 class="card-title fw-bold mb-2">Classic Black Formal Shoes</h5>
-                    <p class="card-text text-muted small mb-3">Premium Italian leather with elegant stitching. Perfect for any formal occasion.</p>
+                    <h5 class="card-title fw-bold mb-2">Elegant Black Formal Heels</h5>
+                    <p class="card-text text-muted small mb-3">Premium heels with sophisticated design. Perfect for evening events and formal occasions.</p>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <p class="product-price mb-0">TND 149.99</p>
                         <div class="text-warning">
@@ -107,9 +113,6 @@ include 'includes/header.php';
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                     </div>
-                    <button class="btn btn-primary w-100" style="background-color: #c41e3a; border: none; padding: 0.7rem;">
-                        <i class="fas fa-shopping-cart me-2"></i> Add to Cart
-                    </button>
                 </div>
             </div>
         </div>
@@ -118,15 +121,11 @@ include 'includes/header.php';
         <div class="col-md-4 mb-4">
             <div class="card product-card h-100 shadow-lg" style="border: none; border-radius: 10px;">
                 <div class="position-relative overflow-hidden" style="height: 280px;">
-                    <img src="https://via.placeholder.com/400x300?text=Elegant+White+Heels" class="card-img-top h-100 w-100" alt="Elegant White Heels" style="object-fit: cover;">
-                    <span class="product-category">Women's</span>
-                    <div class="position-absolute top-0 end-0 p-3">
-                        <span class="badge bg-success">Popular</span>
-                    </div>
+                    <img src="images/casual_shoe.jpg" class="card-img-top h-100 w-100" alt="Casual Shoes" style="object-fit: cover;">
                 </div>
                 <div class="card-body" style="padding: 1.5rem;">
-                    <h5 class="card-title fw-bold mb-2">Elegant Pearl White Heels</h5>
-                    <p class="card-text text-muted small mb-3">Stunning satin heels with crystal embellishments. Perfect for special occasions.</p>
+                    <h5 class="card-title fw-bold mb-2">Classic White Casual Sneaker</h5>
+                    <p class="card-text text-muted small mb-3">Clean and versatile white sneaker with premium comfort. Perfect for everyday wear and casual style.</p>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <p class="product-price mb-0">TND 189.99</p>
                         <div class="text-warning">
@@ -137,9 +136,6 @@ include 'includes/header.php';
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <button class="btn btn-primary w-100" style="background-color: #c41e3a; border: none; padding: 0.7rem;">
-                        <i class="fas fa-shopping-cart me-2"></i> Add to Cart
-                    </button>
                 </div>
             </div>
         </div>
@@ -148,15 +144,11 @@ include 'includes/header.php';
         <div class="col-md-4 mb-4">
             <div class="card product-card h-100 shadow-lg" style="border: none; border-radius: 10px;">
                 <div class="position-relative overflow-hidden" style="height: 280px;">
-                    <img src="https://via.placeholder.com/400x300?text=Brown+Leather+Oxford" class="card-img-top h-100 w-100" alt="Brown Leather Oxford" style="object-fit: cover;">
-                    <span class="product-category">Men's</span>
-                    <div class="position-absolute top-0 end-0 p-3">
-                        <span class="badge bg-warning text-dark">Sale</span>
-                    </div>
+                    <img src="images/confort_shoe.jpg" class="card-img-top h-100 w-100" alt="Comfort Shoes" style="object-fit: cover;">
                 </div>
                 <div class="card-body" style="padding: 1.5rem;">
-                    <h5 class="card-title fw-bold mb-2">Brown Leather Oxford</h5>
-                    <p class="card-text text-muted small mb-3">Sophisticated brown oxford shoes. Versatile and timeless design.</p>
+                    <h5 class="card-title fw-bold mb-2">Red Sport Running Shoe</h5>
+                    <p class="card-text text-muted small mb-3">Stylish red running shoe with superior comfort technology. Perfect for sports and active lifestyle.</p>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <p class="product-price mb-0"><del class="text-muted">TND 179.99</del> TND 129.99</p>
                         <div class="text-warning">
@@ -167,9 +159,6 @@ include 'includes/header.php';
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                     </div>
-                    <button class="btn btn-primary w-100" style="background-color: #c41e3a; border: none; padding: 0.7rem;">
-                        <i class="fas fa-shopping-cart me-2"></i> Add to Cart
-                    </button>
                 </div>
             </div>
         </div>

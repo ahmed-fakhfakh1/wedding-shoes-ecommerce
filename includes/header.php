@@ -19,14 +19,47 @@ if (session_status() === PHP_SESSION_NONE) {
     
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .navbar-custom {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%);
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+        }
+        
+        .navbar-custom .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white !important;
+        }
+        
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            transition: all 0.3s ease;
+            margin: 0 8px;
+        }
+        
+        .navbar-custom .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .navbar-custom .dropdown-menu {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%);
+            border: none;
+        }
+        
+        .navbar-custom .dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
         <div class="container-fluid">
             <!-- Logo/Brand -->
             <a class="navbar-brand" href="index.php">
-                <i class="fas fa-shoe-prints"></i> Shoes Hub
+                <img src="images/logo.png" alt="Shoes Hub Logo" style="height: 40px; margin-right: 10px;"> Shoes Hub
             </a>
             
             <!-- Toggle Button for Mobile -->
@@ -50,6 +83,11 @@ if (session_status() === PHP_SESSION_NONE) {
                             <li><a class="dropdown-item" href="products-men.php"><i class="fas fa-crown"></i> Men's Shoes</a></li>
                             <li><a class="dropdown-item" href="products-women.php"><i class="fas fa-crown"></i> Women's Shoes</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">
+                            <i class="fas fa-envelope"></i> Contact Us
+                        </a>
                     </li>
                     
                     <!-- Admin Link (Only visible if logged in as admin) -->
