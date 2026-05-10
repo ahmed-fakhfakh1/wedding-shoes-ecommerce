@@ -91,38 +91,9 @@ include 'includes/header.php';
                         <i class="fas fa-sign-in-alt me-2"></i> Sign In
                     </button>
 
-                    <!-- Divider -->
-                    <div class="my-4 position-relative">
-                        <div style="border-top: 1px solid #dee2e6;"></div>
-                        <span style="
-                            position: absolute;
-                            top: -12px;
-                            left: 50%;
-                            transform: translateX(-50%);
-                            background: white;
-                            padding: 0 10px;
-                            color: #999;
-                            font-size: 0.9rem;
-                        ">OR</span>
-                    </div>
+                  
 
-                    <!-- Social Login (Optional) -->
-                    <div class="d-grid gap-2">
-                        <button 
-                            type="button" 
-                            class="btn" 
-                            style="
-                                background-color: #f8f9fa;
-                                border: 1px solid #dee2e6;
-                                color: #333;
-                                padding: 0.75rem;
-                                border-radius: 8px;
-                            "
-                            onclick="alert('Social login not implemented yet')"
-                        >
-                            <i class="fab fa-google" style="color: #db4437;"></i> Continue with Google
-                        </button>
-                    </div>
+                   
                 </form>
             </div>
 
