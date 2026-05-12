@@ -1,22 +1,14 @@
 <?php
-// Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-// Check if user is logged in, if not redirect to login page
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
 }
-
-// Set page title for header
 $page_title = "Home";
-
-// Include header
 include 'includes/header.php';
 ?>
-
 <!-- Banner Section with Text and Image -->
 <section class="banner-section mb-5" style="background: white; padding: 0;">
     <div class="container-fluid" style="padding: 0;">
@@ -28,14 +20,12 @@ include 'includes/header.php';
                     <p class="lead mb-3" style="font-size: 1.1rem;">Premium Quality Shoes for Every Style & Occasion</p>
                     <p class="mb-4" style="font-size: 0.95rem; opacity: 0.95;">Discover our wide selection of comfortable, stylish shoes for men, women, and every occasion.</p>
                     <div class="d-flex gap-2 flex-wrap">
-                     
                         <a href="#featured" class="btn btn-outline-light btn-sm px-4">
                             <i class="fas fa-arrow-down me-2"></i> Explore
                         </a>
                     </div>
                 </div>
             </div>
-            
             <!-- Right Side - Banner Image -->
             <div class="col-md-6" style="padding: 0; overflow: hidden; min-height: 220px;">
                 <img src="images/banner.jpg" alt="Shoes Hub Banner" style="width: 100%; height: 100%; object-fit: cover; display: block;">
@@ -43,14 +33,12 @@ include 'includes/header.php';
         </div>
     </div>
 </section>
-
 <!-- Category Section -->
 <section class="mb-5 py-5">
     <div class="text-center mb-5">
         <h2 class="display-5 fw-bold mb-3">Shop by Category</h2>
         <p class="text-muted" style="font-size: 1.1rem;">Find the perfect pair for everyone</p>
     </div>
-    
     <div class="row">
         <!-- Men's Shoes -->
         <div class="col-md-6 mb-4">
@@ -66,7 +54,6 @@ include 'includes/header.php';
                 </div>
             </a>
         </div>
-
         <!-- Women's Shoes -->
         <div class="col-md-6 mb-4">
             <a href="products-women.php" style="text-decoration: none;">
@@ -83,14 +70,12 @@ include 'includes/header.php';
         </div>
     </div>
 </section>
-
 <!-- Featured Products Section -->
 <section class="mb-5 py-5" id="featured">
     <div class="text-center mb-5">
         <h2 class="display-5 fw-bold mb-3">Featured Collection</h2>
         <p class="text-muted" style="font-size: 1.1rem;">Discover our most popular and bestselling shoe styles</p>
     </div>
-
     <div class="row">
         <!-- Product 1 -->
         <div class="col-md-4 mb-4">
@@ -114,7 +99,6 @@ include 'includes/header.php';
                 </div>
             </div>
         </div>
-
         <!-- Product 2 -->
         <div class="col-md-4 mb-4">
             <div class="card product-card h-100 shadow-lg" style="border: none; border-radius: 10px;">
@@ -137,7 +121,6 @@ include 'includes/header.php';
                 </div>
             </div>
         </div>
-
         <!-- Product 3 -->
         <div class="col-md-4 mb-4">
             <div class="card product-card h-100 shadow-lg" style="border: none; border-radius: 10px;">
@@ -161,20 +144,17 @@ include 'includes/header.php';
             </div>
         </div>
     </div>
-
     <div class="text-center mt-5">
         <a href="products.php" class="btn btn-outline-primary btn-lg px-5">
             <i class="fas fa-th-large me-2"></i> View All Products
         </a>
     </div>
 </section>
-
 <!-- Features Section -->
 <section class="py-5" style="background-color: #f8f9fa; border-radius: 10px; margin-bottom: 5rem;">
     <div class="text-center mb-5">
         <h2 class="display-5 fw-bold mb-3">Why Choose Shoes Hub?</h2>
     </div>
-    
     <div class="row">
         <div class="col-md-3 mb-4 text-center">
             <div style="font-size: 3.5rem; color: #c41e3a; margin-bottom: 1rem;">
@@ -183,7 +163,6 @@ include 'includes/header.php';
             <h5 class="fw-bold mb-2">Premium Quality</h5>
             <p class="text-muted">Hand-selected premium materials and craftsmanship</p>
         </div>
-
         <div class="col-md-3 mb-4 text-center">
             <div style="font-size: 3.5rem; color: #c41e3a; margin-bottom: 1rem;">
                 <i class="fas fa-truck"></i>
@@ -191,7 +170,6 @@ include 'includes/header.php';
             <h5 class="fw-bold mb-2">Fast Delivery</h5>
             <p class="text-muted">Express shipping available. Free over TND 100</p>
         </div>
-
         <div class="col-md-3 mb-4 text-center">
             <div style="font-size: 3.5rem; color: #c41e3a; margin-bottom: 1rem;">
                 <i class="fas fa-heart"></i>
@@ -199,7 +177,6 @@ include 'includes/header.php';
             <h5 class="fw-bold mb-2">Comfort First</h5>
             <p class="text-muted">Ergonomic design for all-day comfort</p>
         </div>
-
         <div class="col-md-3 mb-4 text-center">
             <div style="font-size: 3.5rem; color: #c41e3a; margin-bottom: 1rem;">
                 <i class="fas fa-redo-alt"></i>
@@ -209,14 +186,12 @@ include 'includes/header.php';
         </div>
     </div>
 </section>
-
 <!-- Shoe Care Tips Section -->
 <section class="mb-5 py-5">
     <div class="text-center mb-5">
         <h2 class="display-5 fw-bold mb-3">Shoe Care Tips</h2>
         <p class="text-muted" style="font-size: 1.1rem;">Maintain the beauty of your shoes for years to come</p>
     </div>
-
     <div class="row">
         <div class="col-md-6 mb-4">
             <div class="card h-100" style="border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 10px;">
@@ -230,7 +205,6 @@ include 'includes/header.php';
                 </div>
             </div>
         </div>
-
         <div class="col-md-6 mb-4">
             <div class="card h-100" style="border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 10px;">
                 <div class="card-body">
@@ -243,7 +217,6 @@ include 'includes/header.php';
                 </div>
             </div>
         </div>
-
         <div class="col-md-6 mb-4">
             <div class="card h-100" style="border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 10px;">
                 <div class="card-body">
@@ -256,7 +229,6 @@ include 'includes/header.php';
                 </div>
             </div>
         </div>
-
         <div class="col-md-6 mb-4">
             <div class="card h-100" style="border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 10px;">
                 <div class="card-body">
@@ -271,7 +243,6 @@ include 'includes/header.php';
         </div>
     </div>
 </section>
-
 <!-- About Shoes Hub Section -->
 <section class="mb-5 py-5" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.05) 0%, rgba(27, 27, 27, 0.05) 100%); border-radius: 10px; padding: 3rem;">
     <div class="row align-items-center">
@@ -302,8 +273,6 @@ include 'includes/header.php';
         </div>
     </div>
 </section>
-
 <?php
-// Include footer
 include 'includes/footer.php';
 ?>

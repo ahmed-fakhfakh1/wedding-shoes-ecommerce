@@ -1,24 +1,20 @@
         </div>
     </main>
-
     <!-- Footer Styles -->
     <style>
         .footer-custom {
             background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%);
             box-shadow: 0 -4px 12px rgba(196, 30, 58, 0.3);
         }
-        
         .footer-custom a {
             color: white !important;
             transition: all 0.3s ease;
         }
-        
         .footer-custom a:hover {
             color: #ffffff !important;
             transform: translateY(-2px);
             display: inline-block;
         }
-        
         .footer-custom .form-control {
             background-color: rgba(255,255,255,0.1) !important;
             border: 1px solid rgba(255,255,255,0.2) !important;
@@ -26,23 +22,19 @@
             padding: 0.4rem 0.6rem;
             font-size: 0.9rem;
         }
-        
         .footer-custom .form-control::placeholder {
             color: rgba(255,255,255,0.6);
         }
-        
         .footer-custom h5 {
             font-size: 1.1rem;
             margin-bottom: 0.8rem;
         }
-        
         .footer-custom p {
             font-size: 0.9rem;
             margin-bottom: 0.8rem;
             color: white !important;
         }
     </style>
-
     <!-- Footer -->
     <footer class="footer-custom text-white mt-5 py-3">
         <div class="container">
@@ -63,7 +55,6 @@
                         <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-
                 <!-- Contact Form -->
                 <div class="col-md-6" id="contact">
                     <h5 class="mb-2">Quick Contact</h5>
@@ -76,7 +67,6 @@
                         </div>';
                         unset($_SESSION['contact_success']);
                     }
-                    
                     if (isset($_SESSION['contact_errors'])) {
                         foreach ($_SESSION['contact_errors'] as $error) {
                             echo '<div class="alert alert-danger alert-dismissible fade show mb-2" role="alert" style="font-size: 0.85rem; padding: 0.5rem 0.8rem;">
@@ -101,8 +91,6 @@
                     </form>
                 </div>
             </div>
-
-            
             <!-- Bottom Footer -->
             <div class="row" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
                 <div class="col-md-6">
@@ -120,11 +108,7 @@
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
     <script src="js/script.js"></script>
 </body>
 </html>

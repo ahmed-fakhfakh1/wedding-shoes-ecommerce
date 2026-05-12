@@ -1,5 +1,4 @@
 <?php
-
 class product {
     public $id;
     public $name;
@@ -13,114 +12,73 @@ class product {
     public $status;
     public $created_at;
     public $updated_at;
-    
-    
-    // CREATE - Insert new product
     public function insert() {
         require_once(__DIR__ . '/../includes/config.php');
         $cnx = new connexion();
         $pdo = $cnx->cnxBase();
-        
         $req = "INSERT INTO products (name, sku, gender, category_id, size, quantity, price, image_url, status) 
                 VALUES ('$this->name', '$this->sku', '$this->gender', '$this->category_id', '$this->size', '$this->quantity', '$this->price', '$this->image_url', '$this->status')";
-        
         $pdo->exec($req);
-        
-        // Return the last inserted ID
         return $pdo->lastInsertId();
     }
-    
-    
-    // READ - Get all products
     public function getAllProducts() {
         require_once(__DIR__ . '/../includes/config.php');
         $cnx = new connexion();
         $pdo = $cnx->cnxBase();
-        
         $req = "SELECT * FROM products ORDER BY created_at DESC";
         $result = $pdo->query($req);
         $products = $result->fetchAll(PDO::FETCH_ASSOC);
-        
         return $products;
     }
-    
-    
-    // READ - Get single product by ID
     public function getProduct($id) {
         require_once(__DIR__ . '/../includes/config.php');
         $cnx = new connexion();
         $pdo = $cnx->cnxBase();
-        
         $req = "SELECT * FROM products WHERE id = $id";
         $result = $pdo->query($req);
         $product = $result->fetch(PDO::FETCH_ASSOC);
-        
         return $product;
     }
-    
-    
-    // READ - Get products by gender
     public function getProductsByGender($gender) {
         require_once(__DIR__ . '/../includes/config.php');
         $cnx = new connexion();
         $pdo = $cnx->cnxBase();
-        
         $req = "SELECT * FROM products WHERE gender = '$gender' ORDER BY created_at DESC";
         $result = $pdo->query($req);
         $products = $result->fetchAll(PDO::FETCH_ASSOC);
-        
         return $products;
     }
-    
-    
-    // READ - Get products by category
     public function getProductsByCategory($category_id) {
         require_once(__DIR__ . '/../includes/config.php');
         $cnx = new connexion();
         $pdo = $cnx->cnxBase();
-        
         $req = "SELECT * FROM products WHERE category_id = $category_id ORDER BY created_at DESC";
         $result = $pdo->query($req);
         $products = $result->fetchAll(PDO::FETCH_ASSOC);
-        
         return $products;
     }
-    
-    
-    // READ - Search products
     public function searchProducts($keyword) {
         require_once(__DIR__ . '/../includes/config.php');
         $cnx = new connexion();
         $pdo = $cnx->cnxBase();
-        
         $req = "SELECT * FROM products WHERE name LIKE '%$keyword%' OR sku LIKE '%$keyword%' ORDER BY created_at DESC";
         $result = $pdo->query($req);
         $products = $result->fetchAll(PDO::FETCH_ASSOC);
-        
         return $products;
     }
-    
-    
-    // READ - Get active products
     public function getActiveProducts() {
         require_once(__DIR__ . '/../includes/config.php');
         $cnx = new connexion();
         $pdo = $cnx->cnxBase();
-        
         $req = "SELECT * FROM products WHERE status = 1 ORDER BY created_at DESC";
         $result = $pdo->query($req);
         $products = $result->fetchAll(PDO::FETCH_ASSOC);
-        
         return $products;
     }
-    
-    
-    // UPDATE - Update product
     public function updateProduct() {
         require_once(__DIR__ . '/../includes/config.php');
         $cnx = new connexion();
         $pdo = $cnx->cnxBase();
-        
         $req = "UPDATE products SET 
                 name = '$this->name', 
                 gender = '$this->gender', 
@@ -132,17 +90,12 @@ class product {
                 status = '$this->status',
                 updated_at = NOW()
                 WHERE id = $this->id";
-        
         $pdo->exec($req);
     }
-    
-    
-    // DELETE - Delete product
     public function deleteProduct($id) {
         require_once(__DIR__ . '/../includes/config.php');
         $cnx = new connexion();
         $pdo = $cnx->cnxBase();
-        
         $req = "DELETE FROM products WHERE id = $id";
         $pdo->exec($req);
     }

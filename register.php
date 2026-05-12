@@ -2,7 +2,6 @@
 $page_title = "Register";
 include 'includes/header.php';
 ?>
-
 <div class="row justify-content-center">
     <div class="col-md-6 col-lg-5">
         <!-- Register Card -->
@@ -15,7 +14,6 @@ include 'includes/header.php';
                 <h3 class="fw-bold mb-2">Create Account</h3>
                 <p class="mb-0" style="opacity: 0.9;">Join Shoes Hub for exclusive offers</p>
             </div>
-
             <!-- Form Body -->
             <div class="card-body" style="padding: 2.5rem;">
                 <form action="controllers/inscription.php" method="POST" id="registerForm" novalidate>
@@ -31,7 +29,6 @@ include 'includes/header.php';
                                 class="form-control" 
                                 id="fullname" 
                                 name="fullname" 
-                                
                                 required
                                 style="border: 1px solid #dee2e6; padding: 0.75rem 1rem;"
                             >
@@ -39,7 +36,6 @@ include 'includes/header.php';
                         <div class="invalid-feedback" style="display: block;">
                         </div>
                     </div>
-
                     <!-- Email Field -->
                     <div class="mb-4">
                         <label for="email" class="form-label fw-bold" style="color: #333;">Email Address</label>
@@ -52,7 +48,6 @@ include 'includes/header.php';
                                 class="form-control" 
                                 id="email" 
                                 name="email" 
-                               
                                 required
                                 style="border: 1px solid #dee2e6; padding: 0.75rem 1rem;"
                             >
@@ -60,7 +55,6 @@ include 'includes/header.php';
                         <div class="invalid-feedback" style="display: block;">
                         </div>
                     </div>
-
                     <!-- Phone Field -->
                     <div class="mb-4">
                         <label for="phone" class="form-label fw-bold" style="color: #333;">Phone Number</label>
@@ -80,7 +74,6 @@ include 'includes/header.php';
                         <div class="invalid-feedback" style="display: block;">
                         </div>
                     </div>
-
                     <!-- Address Field -->
                     <div class="mb-4">
                         <label for="address" class="form-label fw-bold" style="color: #333;">Address</label>
@@ -93,7 +86,6 @@ include 'includes/header.php';
                                 class="form-control" 
                                 id="address" 
                                 name="address" 
-
                                 required
                                 style="border: 1px solid #dee2e6; padding: 0.75rem 1rem;"
                             >
@@ -101,7 +93,6 @@ include 'includes/header.php';
                         <div class="invalid-feedback" style="display: block;">
                         </div>
                     </div>
-
                     <!-- Password Field -->
                     <div class="mb-4">
                         <label for="password" class="form-label fw-bold" style="color: #333;">Password</label>
@@ -127,9 +118,7 @@ include 'includes/header.php';
                                 <i class="fas fa-eye" id="eyeIcon1" style="color: #c41e3a;"></i>
                             </button>
                         </div>
-                        
                     </div>
-
                     <!-- Confirm Password Field -->
                     <div class="mb-4">
                         <label for="confirm_password" class="form-label fw-bold" style="color: #333;">Confirm Password</label>
@@ -154,15 +143,9 @@ include 'includes/header.php';
                                 <i class="fas fa-eye" id="eyeIcon2" style="color: #c41e3a;"></i>
                             </button>
                         </div>
-                        
                     </div>
-
                     <!-- Terms & Conditions -->
-                    
-
                     <!-- Newsletter Opt-in -->
-                  
-
                     <!-- Register Button -->
                     <button 
                         type="submit" 
@@ -183,7 +166,6 @@ include 'includes/header.php';
                     </button>
                 </form>
             </div>
-
             <!-- Footer -->
             <div style="background-color: #f8f9fa; padding: 1.5rem; text-align: center; border-top: 1px solid #dee2e6;">
                 <p class="mb-0" style="color: #666; font-size: 0.95rem;">
@@ -196,13 +178,10 @@ include 'includes/header.php';
         </div>
     </div>
 </div>
-
 <script>
-// Toggle password visibility
 function togglePasswordVisibility(fieldId, iconId) {
     const field = document.getElementById(fieldId);
     const icon = document.getElementById(iconId);
-    
     if (field.type === 'password') {
         field.type = 'text';
         icon.classList.remove('fa-eye');
@@ -213,47 +192,35 @@ function togglePasswordVisibility(fieldId, iconId) {
         icon.classList.add('fa-eye');
     }
 }
-
-// Form validation
 document.getElementById('registerForm').addEventListener('submit', function(e) {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm_password').value;
-    
-    // Check if passwords match
     if (password !== confirmPassword) {
         document.getElementById('confirm_password').classList.add('is-invalid');
         e.preventDefault();
         e.stopPropagation();
     }
-    
-    // Check password length
     if (password.length < 6) {
         document.getElementById('password').classList.add('is-invalid');
         e.preventDefault();
         e.stopPropagation();
     }
-    
     if (!this.checkValidity()) {
         e.preventDefault();
         e.stopPropagation();
     }
     this.classList.add('was-validated');
 });
-
-// Clear validation on input
 document.getElementById('email').addEventListener('input', function() {
     this.classList.remove('is-invalid');
 });
-
 document.getElementById('password').addEventListener('input', function() {
     this.classList.remove('is-invalid');
 });
-
 document.getElementById('confirm_password').addEventListener('input', function() {
     this.classList.remove('is-invalid');
 });
 </script>
-
 <?php
 include 'includes/footer.php';
 ?>

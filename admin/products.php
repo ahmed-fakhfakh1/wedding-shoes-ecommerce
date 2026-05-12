@@ -1,44 +1,30 @@
 <?php
 session_start();
-
-// Check if user is logged in and is admin
 if (!isset($_SESSION['user_id']) || $_SESSION['is_admin'] != 1) {
     header('Location: ../login.php');
     exit();
 }
-
 require_once('../class/product.class.php');
-
 $page_title = "Manage Products";
-
-// Get all products
 $prod = new product();
 $products = $prod->getAllProducts();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_title; ?> - Shoes Hub Admin</title>
-    
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
     <style>
         :root {
             --primary-color: #c41e3a;
             --dark-color: #1a1a1a;
         }
-
         body {
             background-color: #f5f5f5;
         }
-
         .sidebar {
             background: linear-gradient(135deg, var(--primary-color) 0%, #8b1428 100%);
             min-height: 100vh;
@@ -49,30 +35,25 @@ $products = $prod->getAllProducts();
             left: 0;
             top: 0;
         }
-
         .sidebar .brand {
             padding: 1.5rem;
             text-align: center;
             border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             margin-bottom: 2rem;
         }
-
         .sidebar .brand h3 {
             margin: 0;
             font-weight: bold;
             font-size: 1.3rem;
         }
-
         .sidebar-nav {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-
         .sidebar-nav li {
             margin: 0.5rem 0;
         }
-
         .sidebar-nav a {
             display: block;
             color: rgba(255, 255, 255, 0.8);
@@ -81,19 +62,16 @@ $products = $prod->getAllProducts();
             transition: all 0.3s ease;
             border-left: 4px solid transparent;
         }
-
         .sidebar-nav a:hover,
         .sidebar-nav a.active {
             color: white;
             background-color: rgba(255, 255, 255, 0.1);
             border-left-color: white;
         }
-
         .main-content {
             margin-left: 280px;
             padding: 2rem;
         }
-
         .top-bar {
             background: white;
             padding: 1.5rem;
@@ -104,111 +82,90 @@ $products = $prod->getAllProducts();
             justify-content: space-between;
             align-items: center;
         }
-
         .top-bar h2 {
             margin: 0;
             color: var(--primary-color);
             font-weight: bold;
         }
-
         .container-section {
             background: white;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
-
         .table-container {
             overflow-x: auto;
         }
-
         .table {
             margin-bottom: 0;
         }
-
         .table thead {
             background-color: #f8f9fa;
         }
-
         .table thead th {
             color: var(--primary-color);
             font-weight: bold;
             border-bottom: 2px solid var(--primary-color);
         }
-
         .table tbody tr:hover {
             background-color: #f8f9fa;
         }
-
         .action-buttons {
             display: flex;
             gap: 0.5rem;
         }
-
         .action-buttons .btn {
             padding: 0.5rem 1rem;
             font-size: 0.85rem;
         }
-
         .btn-edit {
             background-color: #007bff;
             color: white;
             border: none;
         }
-
         .btn-edit:hover {
             background-color: #0056b3;
             color: white;
         }
-
         .btn-delete {
             background-color: #dc3545;
             color: white;
             border: none;
         }
-
         .btn-delete:hover {
             background-color: #c82333;
             color: white;
         }
-
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
         }
-
         .btn-primary:hover {
             background-color: #a01830;
             border-color: #a01830;
         }
-
         .product-image {
             width: 50px;
             height: 50px;
             object-fit: cover;
             border-radius: 5px;
         }
-
         .badge-stock {
             padding: 0.5rem 1rem;
             border-radius: 20px;
         }
-
         .badge-stock.in-stock {
             background-color: #d4edda;
             color: #155724;
         }
-
         .badge-stock.low-stock {
             background-color: #fff3cd;
             color: #856404;
         }
-
         .badge-stock.out-of-stock {
             background-color: #f8d7da;
             color: #721c24;
         }
-
         @media (max-width: 768px) {
             .sidebar {
                 width: 100%;
@@ -216,20 +173,16 @@ $products = $prod->getAllProducts();
                 min-height: auto;
                 position: relative;
             }
-
             .main-content {
                 margin-left: 0;
             }
-
             .top-bar {
                 flex-direction: column;
                 text-align: center;
             }
-
             .action-buttons {
                 flex-direction: column;
             }
-
             .action-buttons .btn {
                 width: 100%;
             }
@@ -243,7 +196,6 @@ $products = $prod->getAllProducts();
             <h3><i class="fas fa-shoe-prints"></i> Shoes Hub</h3>
             <small>Admin Panel</small>
         </div>
-
         <ul class="sidebar-nav">
             <li>
                 <a href="dashboard.php">
@@ -261,8 +213,6 @@ $products = $prod->getAllProducts();
                 </a>
             </li>
             <li>
-            
-           
             <li style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin-top: 2rem; padding-top: 2rem;">
                 <a href="../controllers/logout.php">
                     <i class="fas fa-sign-out-alt"></i> Logout
@@ -270,7 +220,6 @@ $products = $prod->getAllProducts();
             </li>
         </ul>
     </aside>
-
     <!-- Main Content -->
     <div class="main-content">
         <!-- Top Bar -->
@@ -283,7 +232,6 @@ $products = $prod->getAllProducts();
                 <i class="fas fa-plus"></i> Add New Product
             </a>
         </div>
-
         <!-- Products Table -->
         <div class="container-section">
             <div class="table-container">
@@ -304,7 +252,6 @@ $products = $prod->getAllProducts();
                         <?php
                         if ($products && count($products) > 0) {
                             foreach ($products as $product) {
-                                // Determine stock status
                                 $stock_status = '';
                                 $stock_badge = '';
                                 if ($product['quantity'] == 0) {
@@ -317,12 +264,8 @@ $products = $prod->getAllProducts();
                                     $stock_status = 'In Stock (' . $product['quantity'] . ')';
                                     $stock_badge = 'in-stock';
                                 }
-                                
-                                // Determine status badge
                                 $status_badge = $product['status'] == 1 ? 'bg-success' : 'bg-secondary';
                                 $status_text = $product['status'] == 1 ? 'Active' : 'Inactive';
-                                
-                                // Determine gender badge color
                                 $gender_badge = '';
                                 switch ($product['gender']) {
                                     case 'Men':
@@ -331,23 +274,20 @@ $products = $prod->getAllProducts();
                                     case 'Women':
                                         $gender_badge = 'bg-warning text-dark';
                                         break;
-                                    
                                     default:
                                         $gender_badge = 'bg-secondary';
                                 }
-                                
-                                // Get image or placeholder
                                 $image_url = !empty($product['image_url']) ? '../' . $product['image_url'] : 'https://via.placeholder.com/50x50?text=No+Image';
                         ?>
                         <tr>
                             <td><?php echo $product['id']; ?></td>
                             <td>
-                                <img src="<?php echo $image_url; ?>" alt="Product Image" class="product-image" onerror="this.src='https://via.placeholder.com/50x50?text=No+Image'">
+                                <img src="<?php echo $image_url; ?>" alt="Product Image" class="product-image" onerror="this.src='https://via.placeholder.com/50x50?text=No+Image';">
                             </td>
                             <td>
-                                <strong><?php echo htmlspecialchars($product['name']); ?></strong>
+                                <strong><?php echo $product['name']; ?></strong>
                                 <br>
-                                <small class="text-muted">SKU: <?php echo htmlspecialchars($product['sku']); ?></small>
+                                <small class="text-muted">SKU: <?php echo $product['sku']; ?></small>
                             </td>
                             <td><span class="badge <?php echo $gender_badge; ?>"><?php echo $product['gender']; ?></span></td>
                             <td><strong>TND <?php echo number_format($product['price'], 2); ?></strong></td>
@@ -383,13 +323,9 @@ $products = $prod->getAllProducts();
                     </tbody>
                 </table>
             </div>
-
             <!-- Pagination -->
-            
         </div>
     </div>
-
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

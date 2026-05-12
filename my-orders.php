@@ -1,28 +1,18 @@
 <?php
-// Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
-
-// Set page title for header
 $page_title = "My Orders";
-
-// Include header and necessary files
 include 'includes/header.php';
 require_once 'includes/config.php';
 require_once 'class/order.class.php';
-
-// Get user's orders
 $order = new Order();
 $orders = $order->getOrdersByUser($_SESSION['user_id']);
 ?>
-
 <!-- Page Header -->
 <section style="background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%); color: white; padding: 50px 0; text-align: center;">
     <div class="container">
@@ -30,7 +20,6 @@ $orders = $order->getOrdersByUser($_SESSION['user_id']);
         <p class="lead">View and manage your orders</p>
     </div>
 </section>
-
 <div class="container mt-5 mb-5">
     <?php if (count($orders) > 0): ?>
         <div class="row">
@@ -54,7 +43,7 @@ $orders = $order->getOrdersByUser($_SESSION['user_id']);
                                         <strong>#<?php echo str_pad($ord['id'], 6, '0', STR_PAD_LEFT); ?></strong>
                                     </td>
                                     <td>
-                                        <?php echo htmlspecialchars($ord['product_name']); ?>
+                                        <?php echo $ord['product_name']; ?>
                                     </td>
                                     <td>
                                         <strong style="color: #c41e3a;">
@@ -69,7 +58,6 @@ $orders = $order->getOrdersByUser($_SESSION['user_id']);
                                             $status = $ord['status'];
                                             $badge_class = '';
                                             $badge_text = '';
-                                            
                                             switch($status) {
                                                 case 'pending':
                                                     $badge_class = 'bg-warning text-dark';
@@ -124,5 +112,4 @@ $orders = $order->getOrdersByUser($_SESSION['user_id']);
         </div>
     <?php endif; ?>
 </div>
-
 <?php include 'includes/footer.php'; ?>
